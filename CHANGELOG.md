@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.14 (2025-08-03)
+
+### Bug Fixes
+
+- V 1.14
+  ([`8568a3e`](https://github.com/PyMoX-fr/Kit/commit/8568a3e40e167eeb36290dddf1e49e39158f2c3a))
+
+
 ## v1.0.13 (2025-08-03)
 
 
