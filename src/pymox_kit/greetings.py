@@ -1,5 +1,5 @@
 def hello():
-    return f"Salut les gens 123 !"
+    return f"Salut les gens !"
 
 
 def bye():
