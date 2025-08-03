@@ -3,7 +3,7 @@ def hello():
 
 
 def bye():
-    a=1
+    a=12
     return f"Bye-bye les gens !"
 
 
