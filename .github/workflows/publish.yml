@@ -30,7 +30,7 @@ jobs:
 
       - name: Run semantic-release
         env:
-          GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: |
           semantic-release version
@@ -45,8 +45,8 @@ jobs:
         run: rm -rf dist/
 
       - name: Build the package
-        env:
-          SETUPTOOLS_SCM_PRETEND_VERSION: ${{ steps.get_tag.outputs.tag }}
+        # env:
+        #   SETUPTOOLS_SCM_PRETEND_VERSION: ${{ steps.get_tag.outputs.tag }}
         run: python -m build
 
       - name: Publish to PyPI
