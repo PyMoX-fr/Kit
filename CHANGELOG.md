@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.16 (2025-08-03)
+
+### Bug Fixes
+
+- Use GH TK
+  ([`2f36175`](https://github.com/PyMoX-fr/Kit/commit/2f36175bd7df0e7681d948b68335de9eb1974e77))
+
+
 ## v1.0.15 (2025-08-03)
 
 ### Bug Fixes
