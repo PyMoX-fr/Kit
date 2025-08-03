@@ -1,6 +1,6 @@
-# PyMoX - GC7
+# PyMoX - Kit
 
-Trousse à outils utiles pour devs en PyMoX
+Trousse à outils utiles pour devs en PyMoX (PY-thon - MO-jo - Flet-X)
 
 ---
 
