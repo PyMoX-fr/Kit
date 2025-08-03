@@ -30,7 +30,7 @@ jobs:
 
       - name: Run semantic-release
         env:
-          GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE }}
+          GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE_KIT }}
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: |
           semantic-release version
