@@ -13,7 +13,7 @@ def tokens():
 
     print(f"GH_TOKEN: {gh_token}\n\nPYPI_TOKEN: {pypi_token}\n")
 
-    return f"Salut les gens 1 !"
+    return f"Salut les gens !"
 
 
 if __name__ == "__main__":
