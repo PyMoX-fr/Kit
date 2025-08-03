@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.5 (2025-08-03)
+
+### Bug Fixes
+
+- Nett 2
+  ([`855effa`](https://github.com/PyMoX-fr/Kit/commit/855effa8f3fdd91454b23e5891fd25511c9ae897))
+
+
 ## v1.0.0 (2025-08-03)
 
 - Initial Release
