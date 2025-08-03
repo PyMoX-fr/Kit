@@ -45,8 +45,8 @@ jobs:
         run: rm -rf dist/
 
       - name: Build the package
-        # env:
-        #   SETUPTOOLS_SCM_PRETEND_VERSION: ${{ steps.get_tag.outputs.tag }}
+        env:
+          SETUPTOOLS_SCM_PRETEND_VERSION: ${{ steps.get_tag.outputs.tag }}
         run: python -m build
 
       - name: Publish to PyPI
