@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.12 (2025-08-03)
+
+### Bug Fixes
+
+- Fix toml
+  ([`d99a8e5`](https://github.com/PyMoX-fr/Kit/commit/d99a8e58d4c81e0af6ead284a86c0d6d6e774f13))
+
+
 ## v1.0.11 (2025-08-03)
 
 ### Bug Fixes
