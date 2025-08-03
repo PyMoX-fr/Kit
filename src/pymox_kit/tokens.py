@@ -20,7 +20,6 @@ if __name__ == "__main__":
 
     tokens()
 
-    # # import greetings as gt
+    # import greetings as gt # en direct
     # from pymox_kit import greetings as gt
-
     # print(gt.hello(), "\n" + gt.bye())
