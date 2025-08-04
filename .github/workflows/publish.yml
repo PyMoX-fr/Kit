@@ -27,10 +27,23 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install python-semantic-release build twine setuptools_scm
+          
+      - name: Debug secret
+        run: |
+          if [ -n "${{ secrets.PYMOX_KIT }}" ]; then
+            echo "Secret exists: true"
+          else
+            echo "Secret exists: false"
+          fi
+
+      - name: Show repo info
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Ref: ${{ github.ref }}"
 
       - name: Run semantic-release
         env:
-          GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE }}
+          GH_TOKEN: ${{ secrets.PYMOX_KIT }}
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: |
           semantic-release version
