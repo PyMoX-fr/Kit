@@ -4,8 +4,6 @@ title:  🏡 Accueil
 ---
 [![Dernière version](https://img.shields.io/github/v/tag/PyMoX-fr/PyMoX-fr.github.io?label=Version)](outils/logs/CHANGELOG.md)
 
-123V45v6
-
 <div align="center">
   <img src="assets/images/pymox_logo_tr_001.png" alt="LOGO" width="150"/>
   <h1>Bienvenue dans l'univers PyMoX 😊 !</h1>

@@ -12,7 +12,6 @@ author: GC7
 <hr>
 
 ## Toutes les citations
-(A change from phone)
 
 <div style="display: flex; justify-content: flex-end; margin-right:10%">
   <div>
