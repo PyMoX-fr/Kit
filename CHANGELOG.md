@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.17 (2026-02-24)
+
+### Bug Fixes
+
+- Add marker for hotreload
+  ([`fb0fd1d`](https://github.com/PyMoX-fr/Kit/commit/fb0fd1da912bc81b50c3b0959c77aa15c0f1f27f))
+
+
 ## v1.0.16 (2026-02-24)
 
 
