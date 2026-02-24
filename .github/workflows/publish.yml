@@ -1,0 +1,101 @@
+name: Semantic & Twine Release
+
+on:
+  push:
+    branches:
+      - main
+    # tags:
+    #   - 'v*' # Pour ne publier PyPI que les tag numérotés faits à la main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    name: Run semantic-release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
+          token: ${{ github.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install python-semantic-release build twine
+
+      - name: Capture latest tag before release
+        id: tag-before
+        run: |
+          git fetch --tags
+          tag=$(git describe --abbrev=0 --tags 2>/dev/null || echo "none")
+          echo "tag_before=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Run semantic-release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          semantic-release version
+          semantic-release publish
+
+      - name: Refresh tags
+        run: git fetch --tags
+
+      - name: Capture latest tag after release
+        id: tag-after
+        run: |
+          tag=$(git describe --abbrev=0 --tags 2>/dev/null || echo "none")
+          echo "tag_after=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Determine whether a release happened
+        id: release-detect
+        run: |
+          if [ "${{ steps.tag-after.outputs.tag_after }}" = "${{ steps.tag-before.outputs.tag_before }}" ]; then
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # - name: Re-checkout after tagging
+      #   run: |
+      #     git fetch --tags
+      #     git checkout $(git describe --tags --abbrev=0)
+
+      - name: Checkout release tag
+        if: steps.release-detect.outputs.release == 'true'
+        run: git checkout "${{ steps.tag-after.outputs.tag_after }}"
+
+      - name: Derive package version from tag
+        if: steps.release-detect.outputs.release == 'true'
+        id: pkg-version
+        run: |
+          tag="${{ steps.tag-after.outputs.tag_after }}"
+          version="${tag#v}"
+          echo "package_version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Clean dist folder
+        if: steps.release-detect.outputs.release == 'true'
+        run: rm -rf dist/
+
+      - name: Build the package
+        if: steps.release-detect.outputs.release == 'true'
+        env:
+          SETUPTOOLS_SCM_PRETEND_VERSION: ${{ steps.pkg-version.outputs.package_version }}
+        run: python -m build
+
+      - name: Publish to PyPI
+        if: steps.release-detect.outputs.release == 'true'
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: twine upload dist/*
