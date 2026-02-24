@@ -4,20 +4,14 @@ Trousse à outils utiles pour devs en PyMoX
 
 ---
 
-## Installation
+## 
 
 ```bash
 py -m venv .venv
 .\.venv\Scripts\activate
 py -m pip install --upgrade pip
-pip install pymox-kit
-```
+pip install -r requirements.txt
 
-## Utilisation
-
-```python
-from pytmox-kit import *
-
-
-prnt(Hello())
+# Installer en editable mode
+# pip install -e .
 ```

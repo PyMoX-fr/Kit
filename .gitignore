@@ -28,5 +28,5 @@ dist/
 src/*.egg-info/
 
 pws.txt
-src/kit/_version.py
+src/pymox_kit/_version.py
 CHANGE.LOG
