@@ -3,13 +3,13 @@ description: Repository Information Overview
 alwaysApply: true
 ---
 
-# GC7 Information
+# PyMoX_Kit Information
 
 ## Summary
-GC7 is a Python utility toolkit for PyMoX developers (PY-thon - MO-jo - Flet-X). The project is set up as a Python package that can be published to PyPI using semantic versioning. It uses GitHub Actions for automated releases and follows conventional commits for version management.
+PyMoX_Kit is a Python utility toolkit for PyMoX developers (PY-thon - MO-jo - Flet-X). The project is set up as a Python package that can be published to PyPI using semantic versioning. It uses GitHub Actions for automated releases and follows conventional commits for version management.
 
 ## Structure
-- **src/gc7/**: Main package source code
+- **src/pymox_kit/**: Main package source code
 - **.github/workflows/**: CI/CD pipeline configurations
 - **.venv/**: Python virtual environment
 - **.zencoder/**: Configuration for Zencoder
@@ -80,7 +80,7 @@ semantic-release publish
 ## Project Configuration
 **Package Structure**:
 - Dynamic versioning using setuptools_scm
-- Source code in src/gc7/
+- Source code in src/pymox_kit/
 - Requires Python 3.10+
 - Uses conventional commits for version management
 - Current version: v1.1.9 (as of 2025-08-02)
