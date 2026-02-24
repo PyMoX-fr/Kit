@@ -3,7 +3,7 @@ from importlib.metadata import version
 
 def hello():
     v = version("pymox_kit")
-    return f"Salut les gens from Pymox-Kit {v} !"
+    return f"Salut les gens from Pymox-Kit version {v} !"
 
 
 def bye():
