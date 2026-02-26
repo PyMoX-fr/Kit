@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.26 (2026-02-26)
+
+### Bug Fixes
+
+- Add sl
+  ([`918a55f`](https://github.com/PyMoX-fr/Kit/commit/918a55f17bb5e0e0623ea170df09f27bbffc3d0d))
+
+
 ## v1.0.25 (2026-02-26)
 
 ### Bug Fixes
