@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.24 (2026-02-26)
+
+### Bug Fixes
+
+- ↑ mt
+  ([`2c55496`](https://github.com/PyMoX-fr/Kit/commit/2c5549649ac086d4ec7719ccfb394af997abf0ac))
+
+
 ## v1.0.23 (2026-02-26)
 
 
