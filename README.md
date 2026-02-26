@@ -2,8 +2,6 @@
 
 Trousse à outils utiles pour devs en PyMoX# Test_Kit
 
-Un simple dépôt public pour tester **PyMox_Kit**, une lib à laquelle que vous pouvez aussi contribuer 
-
 GH : [https://github.com/PyMoX-fr/Kit](https://github.com/PyMoX-fr/Kit)
 
 ![WinSxS Ready](https://img.shields.io/badge/Windows-Ready-0078D6?logo=windows&logoColor=white)
@@ -30,3 +28,9 @@ from pytmox_kit import *
 
 print(Hello())
 ```
+
+## Contribution
+
+Pour tester la lib **PyMox_Kit** : [![GitHub](https://img.shields.io/badge/GitHub-Dépôt_Test_Kit-2ea44f?logo=github&logoColor=white)](https://github.com/PyMoX-fr/Kit)
+
+Si volonté d' ↑ la lib : → Merge Request [![GitHub Passing](https://img.shields.io/badge/GitHub-PyMox_Kit-2ea44f?logo=github&logoColor=white)](https://github.com/PyMoX-fr/Kit)
