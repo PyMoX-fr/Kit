@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v1.0.29 (2026-02-26)
+
+### Bug Fixes
+
+- Try dbug
+  ([`55091f1`](https://github.com/PyMoX-fr/Kit/commit/55091f11a230fc91e998397175500631f3ae60cf))
+
+- Up core
+  ([`ef9d64d`](https://github.com/PyMoX-fr/Kit/commit/ef9d64dbdfdee028e315b6284f70cb7ff2a3fb05))
+
+- ↑ ([`7b355df`](https://github.com/PyMoX-fr/Kit/commit/7b355df29e8f4d5700c63214772b067caa9e0619))
+
+
 ## v1.0.28 (2026-02-26)
 
 
