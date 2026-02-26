@@ -18,6 +18,5 @@ pip install pymox_kit
 ```python
 from pytmox_kit import *
 
-
-prnt(Hello())
+print(Hello())
 ```
