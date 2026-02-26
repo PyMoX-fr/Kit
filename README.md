@@ -19,10 +19,10 @@
       <img src="https://img.shields.io/badge/Python-3.11→3.14-3776AB?logo=python">
     </a>
     <a href="https://pymox.fr/outils/logs/CHANGELOG">
-      <img src="https://img.shields.io/github/v/tag/PyMoX-fr/PyMoX-fr.github.io?label=PyMoX.fr" alt="PyMoX">
+      <img src="https://img.shields.io/github/v/tag/PyMoX-fr/PyMoX-fr.github.io?logo=python&logoColor=cyan&label=PyMoX.fr" alt="PyMoX">
     </a>
     <a href="https://pypi.org/project/pymox-kit">
-      <img src="https://img.shields.io/pypi/v/pymox-kit?logo=python&logoColor=white&label=PyMoX-Kit" alt="PyMoX Kit">
+      <img src="https://img.shields.io/pypi/v/pymox-kit?logo=python&logoColor=orange&label=PyMoX-Kit" alt="PyMoX Kit">
     </a>
     </div>
     <div style="margin: 0;">
