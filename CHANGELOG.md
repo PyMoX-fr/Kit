@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.21 (2026-02-26)
+
+### Bug Fixes
+
+- ↑ badges
+  ([`2788981`](https://github.com/PyMoX-fr/Kit/commit/27889815946d170347b3b5036ee27844764015c9))
+
+
 ## v1.0.20 (2026-02-26)
 
 ### Bug Fixes
