@@ -2,6 +2,8 @@
 
 <div align="center"> <div style="background-color: #ccc; padding: 10px 20px; border-radius: 7px; display: inline-block; font-size: 18px; color: black;"> <span style="vertical-align: middle;"> Trousse à <b>Outils utiles pour devs en</b> </span> <a href="https://pymox.fr" target="_blank" rel="noopener noreferrer"> <img src="https://pymox.fr/assets/images/pymox_logo_tr_001.png" width="70" style="vertical-align: middle;" alt="Logo PyMoX FR"> </a> </div> </div>
 
+----
+
 <div align="center" style="margin-top: 30px">
 
   <!-- Ligne OS -->
