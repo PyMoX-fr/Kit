@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.27 (2026-02-26)
+
+### Bug Fixes
+
+- Set logos colors of pymox & kit
+  ([`8f27391`](https://github.com/PyMoX-fr/Kit/commit/8f273911ed090861325fc938f186abb88051206d))
+
+
 ## v1.0.26 (2026-02-26)
 
 ### Bug Fixes
