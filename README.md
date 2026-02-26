@@ -1,6 +1,16 @@
 # PyMoX-Kit
 
-Trousse à outils utiles pour devs en PyMoX
+Trousse à outils utiles pour devs en PyMoX# Test_Kit
+
+Un simple dépôt public pour tester **PyMox_Kit**, une lib à laquelle que vous pouvez aussi contribuer 
+
+GH : [https://github.com/PyMoX-fr/Kit](https://github.com/PyMoX-fr/Kit)
+
+![WinSxS Ready](https://img.shields.io/badge/Windows-Ready-0078D6?logo=windows&logoColor=white)
+![Linux Compatible](https://img.shields.io/badge/Linux-Compatible-FCC624?logo=linux&logoColor=#FCC624)
+[![Python](https://img.shields.io/badge/Python-3.11→3.14-3776AB?logo=python)](https://www.python.org)
+[![PyMoX-Kit Version](https://img.shields.io/pypi/v/pymox-kit?logo=python&logoColor=white&label=PyMoX-Kit)](https://pypi.org/project/pymox-kit)
+[![GitHub Passing](https://img.shields.io/badge/GitHub-Passing-2ea44f?logo=github&logoColor=white)](https://github.com/PyMoX-fr/Kit)
 
 ---
 
