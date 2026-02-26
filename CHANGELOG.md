@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.25 (2026-02-26)
+
+### Bug Fixes
+
+- Up Doc style
+  ([`00a55c0`](https://github.com/PyMoX-fr/Kit/commit/00a55c03f4d4182608b5cf4850f773a944612943))
+
+
 ## v1.0.24 (2026-02-26)
 
 ### Bug Fixes
