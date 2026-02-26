@@ -21,6 +21,10 @@ dependencies = [
 ]
 requires-python = ">=3.12"
 
+[project.scripts]
+pymox-kit = "pymox_kit.kit:hello"
+
+
 [build-system]
 requires = ["setuptools>=77.0.0", "setuptools_scm", "wheel"]
 # requires = ["setuptools>=61.0", "setuptools_scm>=7.0"]
@@ -59,7 +63,11 @@ upload_to_pypi = true       # active la publication sur PyPI
 
 [tool.setuptools]
 package-dir = { "" = "src" }
-packages = ["pymox_kit"]           # dossier Python
+# packages = ["pymox_kit"] # dossier Python
+# include-package-data = true
+
+[tool.setuptools.package-find]
+where = ["src"]
 
 [tool.setuptools.package-data]
 "*" = ["*.txt", "*.json"] # si tu as des fichiers à inclure
