@@ -69,7 +69,8 @@ include-package-data = true
 [tool.setuptools.packages.find]
 where = ["src"]
 
-[tool.setuptools.package-data] "pymox_kit" = ["*.json", "*.txt"]
+[tool.setuptools.package-data]
+"pymox_kit" = ["*.json", "*.txt"]
 
 # version_scheme = "release-branch-semver" # empêche les suffixes .devX ou .dirty
 [tool.setuptools_scm]
