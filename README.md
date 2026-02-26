@@ -1,17 +1,39 @@
 # PyMoX-Kit
 
-<div style="background-color: #ccc; display: flex; justify-content: center; align-items: center; gap: 7px;margin-bottom: 12px; padding: 8px; border-radius: 7px">
-  <span>Trousse à <b>outils utiles pour devs en</b></span>
+<div style="background-color: #ccc; display: flex; justify-content: center; align-items: center; gap: 30px; padding: 8px; border-radius: 7px; color: black; font-size: 18px; width: 98%; margin: auto; margin-top: 10px; margin-bottom: 15px;">
+  <span>Trousse à <b>Outils utiles pour devs en</b></span>
   <a href="https://pymox.fr" target="_blank" rel="noopener noreferrer">
-    <img src="https://pymox.fr/assets/images/pymox_logo_tr_001.png" title="Visiter le site Web !" width="70">
+    <img src="https://pymox.fr/assets/images/pymox_logo_tr_001.png" title="Visiter le site Web !" width="70" alt="Logo PyMoX FR">
   </a>
 </div>
+<div align="center">
 
-![OS Support](https://img.shields.io/badge/OS-Windows_&_Linux-0078D6) ![WinSxS Ready](https://img.shields.io/badge/Windows-Ready-0078D6?logo=windows&logoColor=white) ![Linux Compatible](https://img.shields.io/badge/Linux-Compatible-FCC624?logo=linux)
-[![Python](https://img.shields.io/badge/Python-3.11→3.14-3776AB?logo=python)](https://www.python.org) [![PyMox_FR](https://img.shields.io/github/v/tag/PyMoX-fr/PyMoX-fr.github.io?label=PyMoX.fr)](https://pymox.fr/outils/logs/CHANGELOG) [![PyMoX-Kit Version](https://img.shields.io/pypi/v/pymox-kit?logo=python&logoColor=white&label=PyMoX-Kit)](https://pypi.org/project/pymox-kit)
-[![GitHub Passing](https://img.shields.io/badge/GitHub-Passing-2ea44f?logo=github&logoColor=white)](https://github.com/PyMoX-fr/Kit)
+  <!-- Ligne OS -->
+  <p style="margin: 4px 0;">
+    <img src="https://img.shields.io/badge/OS-Windows_&_Linux-0078D6" alt="Win & Linux compatibles">
+    <img src="https://img.shields.io/badge/Windows-Ready-0078D6?logo=windows&logoColor=white" alt="Windows ready">
+    <img src="https://img.shields.io/badge/Linux-Compatible-FCC624?logo=linux" alt="Linux compatible">
+  </p>
 
----
+  <!-- Ligne autres badges -->
+  <p style="margin: 4px 0;">
+    <a href="https://www.python.org">
+      <img src="https://img.shields.io/badge/Python-3.11→3.14-3776AB?logo=python">
+    </a>
+    <a href="https://pymox.fr/outils/logs/CHANGELOG">
+      <img src="https://img.shields.io/github/v/tag/PyMoX-fr/PyMoX-fr.github.io?label=PyMoX.fr" alt="PyMoX">
+    </a>
+    <a href="https://pypi.org/project/pymox-kit">
+      <img src="https://img.shields.io/pypi/v/pymox-kit?logo=python&logoColor=white&label=PyMoX-Kit alt="PyMoX Kit">
+    </a>
+    </p>
+    <p style="margin: 4px 0;">
+    <a href="https://github.com/PyMoX-fr/Kit">
+      <img src="https://img.shields.io/badge/GitHub-Passing-2ea44f?logo=github&logoColor=white" alt="GitHub Ready">
+    </a>
+  </p>
+
+</div>
 
 ## Installation
 
