@@ -64,13 +64,12 @@ upload_to_pypi = true       # active la publication sur PyPI
 [tool.setuptools]
 package-dir = { "" = "src" }
 # packages = ["pymox_kit"] # dossier Python
-# include-package-data = true
+include-package-data = true
 
-[tool.setuptools.package-find]
+[tool.setuptools.packages.find]
 where = ["src"]
 
-[tool.setuptools.package-data]
-"*" = ["*.txt", "*.json"] # si tu as des fichiers à inclure
+[tool.setuptools.package-data] "pymox_kit" = ["*.json", "*.txt"]
 
 # version_scheme = "release-branch-semver" # empêche les suffixes .devX ou .dirty
 [tool.setuptools_scm]
