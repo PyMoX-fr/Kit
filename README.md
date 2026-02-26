@@ -35,7 +35,6 @@ Pour tester la lib **PyMox_Kit** : [![GitHub](https://img.shields.io/badge/GitHu
 
 Si volonté d' ↑ la lib : → Merge Request [![GitHub Passing](https://img.shields.io/badge/GitHub-PyMox_Kit-2ea44f?logo=github&logoColor=white)](https://github.com/PyMoX-fr/Kit)
 
-
 ## Help
 
 [![GitHub Issue](https://img.shields.io/badge/GitHub-PyMox_Kit_Issues-2ea44f?logo=github&logoColor=white)](https://github.com/PyMoX-fr/Kit/issues)
