@@ -102,11 +102,11 @@ def hello():
     else:
         print("⚠️ Impossible de vérifier la dernière version (offline ?)")
 
-    return f"Salut les gens from Pymox-Kit version {local_v} !"
+    return f"Salut les gens 😊 !\n\t 👉 From Pymox-Kit, version {local_v} !"
 
 
 def bye():
-    return "Bye-bye les gens !"
+    return "\t\tBye-bye les gens, & @ ++ ⏳..."
 
 
 if __name__ == "__main__":
