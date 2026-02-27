@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.35 (2026-02-27)
+
+### Bug Fixes
+
+- Cache only 1 mn
+  ([`41a2744`](https://github.com/PyMoX-fr/Kit/commit/41a274486bdeeb3c9284da9274a6683ac1c5cdc6))
+
+
 ## v1.0.34 (2026-02-27)
 
 
