@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.33 (2026-02-27)
+
+### Bug Fixes
+
+- ↑ msgs
+  ([`59df3e6`](https://github.com/PyMoX-fr/Kit/commit/59df3e6c249fa5867f223f887a9a9eedb01b3f0d))
+
+
 ## v1.0.32 (2026-02-27)
 
 
