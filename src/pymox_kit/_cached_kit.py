@@ -106,7 +106,7 @@ def hello():
 
 
 def bye():
-    return "\t\tBye-bye les gens, & @ ++ ⏳..."
+    return "\nBye-bye les gens, & @ ++ ⏳..."
 
 
 if __name__ == "__main__":
