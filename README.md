@@ -22,7 +22,7 @@
       <img src="https://img.shields.io/github/v/tag/PyMoX-fr/PyMoX-fr.github.io?logo=python&logoColor=cyan&label=PyMoX.fr" alt="PyMoX">
     </a>
     <a href="https://pypi.org/project/pymox-kit">
-      <img src="https://img.shields.io/pypi/v/pymox-kit?logo=python&logoColor=orange&label=PyMoX-Kit" alt="PyMoX Kit">
+      <img src="https://img.shields.io/pypi/v/pymox-kit?logo=python&logoColor=orange&label=PyMoX-Kit/Pypi.org" alt="PyMoX Kit">
     </a>
     </div>
     <div style="margin: 0;">
@@ -49,6 +49,35 @@ from pytmox_kit import *
 
 print(Hello())
 ```
+
+----
+
+## Dev & exécution locale du package
+
+Vous pouvez lancer la librairie de plusieurs façons.
+
+- Exécuter le package (recommandé) :
+
+```powershell
+$env:PYTHONPATH='src'; python -m pymox_kit
+```
+
+- Afficher la version du package :
+
+```powershell
+$env:PYTHONPATH='src'; python -m pymox_kit --version
+```
+
+- Exécuter un module directement (utile pour tests rapides) :
+
+```powershell
+& .venv\Scripts\python.exe src\pymox_kit\tokens.py
+```
+
+Notes :
+
+- Le package expose désormais un `__main__.py` pour supporter `python -m pymox_kit`.
+- `main.py` définit `main()` (importable: `from pymox_kit.main import main`) et peut être exécuté directement. Les importations sont résilientes : que vous lanciez depuis la racine du dépôt ou après installation, l'exécution devrait fonctionner.
 
 ## Contribution
 

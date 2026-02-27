@@ -23,7 +23,21 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"Erreur lors de l'exécution de tokens(): {e}")
 
-    import kit as gt
+    try:
+        from . import kit as gt
+    except Exception:
+        import sys
+        import os
+        import importlib
+
+        # When executed directly (python tokens.py) the package-relative import
+        # fails because there's no parent package. Add the parent of the
+        # package (the `src` folder) to sys.path and import by package name.
+        pkg_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        if pkg_root not in sys.path:
+            sys.path.insert(0, pkg_root)
+
+        gt = importlib.import_module("pymox_kit.kit")
 
     # from pymox_tools import greetings as gt
 
