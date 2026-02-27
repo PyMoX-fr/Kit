@@ -13,8 +13,7 @@ from importlib.metadata import version
 
 PACKAGE_NAME = "pymox-kit"
 CACHE_FILE = os.path.join(os.path.expanduser("~"), ".pymox_kit_version_cache.json")
-CACHE_TTL = 60  # 1 heure
-# ❌ 3600
+CACHE_TTL = 3660  # 3600 (1 heure)
 
 
 def get_local_version():
@@ -107,7 +106,7 @@ def hello():
 
 
 def bye():
-    return "\nBye-bye les gens, & @ ++ ⏳..."
+    return "Bye-bye les gens, & @ ++ ⏳..."
 
 
 if __name__ == "__main__":
