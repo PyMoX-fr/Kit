@@ -89,9 +89,11 @@ def hello():
     print("Local version :", local_v)
 
     if latest_v:
-        print("Latest PyPI version :", latest_v)
-        if from_cache:
-            print("(info: version obtenue depuis le cache)")
+        print(
+            "Latest PyPI version :",
+            latest_v,
+            "(cache)" if from_cache else "(network)",
+        )
 
         if local_v != latest_v:
             print("⚠️ Une mise à jour est disponible !")
@@ -101,6 +103,10 @@ def hello():
         print("⚠️ Impossible de vérifier la dernière version (offline ?)")
 
     return f"Salut les gens from Pymox-Kit version {local_v} !"
+
+
+def bye():
+    return "Bye-bye les gens !"
 
 
 if __name__ == "__main__":
