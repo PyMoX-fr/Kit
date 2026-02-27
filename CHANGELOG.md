@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.31 (2026-02-27)
+
+### Bug Fixes
+
+- Simply kit
+  ([`e3403ca`](https://github.com/PyMoX-fr/Kit/commit/e3403cacab8e5f65a11c2137eddd05c17aef5004))
+
+
 ## v1.0.30 (2026-02-27)
 
 
