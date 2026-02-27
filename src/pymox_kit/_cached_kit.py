@@ -95,7 +95,7 @@ def hello():
             "(cache)" if from_cache else "(network)",
         )
 
-        if local_v != latest_v:
+        if local_v < latest_v:
             print("⚠️ Une mise à jour est disponible !")
         else:
             print("✅ Vous êtes à jour !")
