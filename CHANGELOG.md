@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.36 (2026-02-27)
+
+### Bug Fixes
+
+- Add ./ini
+  ([`38ec2e8`](https://github.com/PyMoX-fr/Kit/commit/38ec2e8bba0dab355fc4818d0a832ba1173f1139))
+
+
 ## v1.0.35 (2026-02-27)
 
 ### Bug Fixes
