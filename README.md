@@ -58,21 +58,37 @@ print(Hello())
 
 ## Dev & exécution locale du package
 
-Vous pouvez lancer la librairie de plusieurs façons.
-
-- Exécuter le package (recommandé) :
+Préparez un environnement de développement et installez le package en mode editable pour avoir accès au script console `pymox-kit` :
 
 ```powershell
-$env:PYTHONPATH='src'; python -m pymox_kit
+py -m venv .venv
+.\.venv\Scripts\activate
+py -m pip install --upgrade pip
+pip install -e .  # crée la console pymox-kit
 ```
 
-- Afficher la version du package :
+Si vous avez besoin des dépendances listées dans requirements.txt :
 
 ```powershell
-$env:PYTHONPATH='src'; python -m pymox_kit --version
+pip install -r requirements.txt
 ```
 
-- Exécuter un module directement (utile pour tests rapides) :
+Sans installation complète, vous pouvez toujours lancer les modules en ajoutant `src` dans `PYTHONPATH` :
+
+```powershell
+$env:PYTHONPATH='src'; python -m pymox_kit  # exécute __main__
+$env:PYTHONPATH='src'; python -m pymox_kit --version  # affiche la version
+$env:PYTHONPATH='src'; python -m pymox_kit.main  # appelle pymox_kit.main.main()
+& .venv\Scripts\python.exe src\pymox_kit\main.py  # équivalent revenir à la racine
+```
+
+Après `pip install -e .`, le script console est disponible directement :
+
+```powershell
+pymox-kit
+```
+
+Pour les diagnostics rapides du module `tokens` :
 
 ```powershell
 & .venv\Scripts\python.exe src\pymox_kit\tokens.py
@@ -80,8 +96,8 @@ $env:PYTHONPATH='src'; python -m pymox_kit --version
 
 Notes :
 
-- Le package expose désormais un `__main__.py` pour supporter `python -m pymox_kit`.
-- `main.py` définit `main()` (importable: `from pymox_kit.main import main`) et peut être exécuté directement. Les importations sont résilientes : que vous lanciez depuis la racine du dépôt ou après installation, l'exécution devrait fonctionner.
+- `__main__.py` propose `--version` et délègue d'abord à `pymox_kit.main.main()` avant d'imprimer `hello()` / `bye()`.<br>
+- `main.py` remet automatiquement la racine `src` dans `sys.path` quand il est exécuté comme script, ce qui garantit que la même logique marche depuis le dépôt ou après installation.
 
 ## Contribution
 
