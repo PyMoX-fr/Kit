@@ -37,7 +37,7 @@
 
 </div>
 
-## Installation
+## 🏗️ Installation
 
 ```bash
 py -m venv .venv
@@ -46,7 +46,7 @@ py -m pip install --upgrade pip
 pip install pymox_kit
 ```
 
-## Utilisation
+## 🚀 Utilisation
 
 ```python
 from pytmox_kit import *
@@ -54,9 +54,11 @@ from pytmox_kit import *
 print(Hello())
 ```
 
+## Voir + 👉 [Doc détaillée](./doc/DOC.md)
+
 ----
 
-## Dev & exécution locale du package
+## 🧪 Dev & exécution locale du package
 
 Préparez un environnement de développement et installez le package en mode editable pour avoir accès au script console `pymox-kit` :
 
@@ -96,15 +98,15 @@ Pour les diagnostics rapides du module `tokens` :
 
 Notes :
 
-- `__main__.py` propose `--version` et délègue d'abord à `pymox_kit.main.main()` avant d'imprimer `hello()` / `bye()`.<br>
-- `main.py` remet automatiquement la racine `src` dans `sys.path` quand il est exécuté comme script, ce qui garantit que la même logique marche depuis le dépôt ou après installation.
+- **`__main__.py`** propose `--version` et délègue d'abord à `pymox_kit.main.main()` avant d'imprimer `hello()` / `bye()`.<br>
+- **`main.py`** remet automatiquement la racine `src` dans `sys.path` quand il est exécuté comme script, ce qui garantit que la même logique marche depuis le dépôt ou après installation. **./rmain.py** permet même de tester la vraie lib installée en VE (Bref, comme un user lambda)
 
-## Contribution
+## 💡 Contribution
 
 Pour tester la lib **PyMox_Kit** : [![GitHub](https://img.shields.io/badge/GitHub-Dépôt_Test_Kit-2ea44f?logo=github&logoColor=white)](https://github.com/PyMoX-fr/Kit)
 
 Si volonté d' ↑ la lib : → Merge Request [![GitHub Passing](https://img.shields.io/badge/GitHub-PyMox_Kit-2ea44f?logo=github&logoColor=white)](https://github.com/PyMoX-fr/Kit)
 
-## Help
+## 🧩 Help
 
 [![GitHub Issue](https://img.shields.io/badge/GitHub-PyMox_Kit_Issues-2ea44f?logo=github&logoColor=white)](https://github.com/PyMoX-fr/Kit/issues)
