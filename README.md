@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-    <img src="assets/imgs/PyMoX-Kit_Logo.png" alt="PyMoX-Kit">
+    <img src="https://pymox.fr/assets/images/PyMoX-Kit_Logo.png" alt="PyMoX-Kit logo">
 </div>
 
 # PyMoX-Kit
