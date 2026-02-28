@@ -8,7 +8,7 @@
 
 ----
 
-<div align="center" style="margin-top: 200px">
+<div align="center" style="margin-top: 0">
 
   <!-- Ligne OS -->
   <div style="margin: 0;">
