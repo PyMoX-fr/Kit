@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.40 (2026-02-28)
+
+### Bug Fixes
+
+- Up CLI hotreload with flet
+  ([`eab405f`](https://github.com/PyMoX-fr/Kit/commit/eab405f32f563f5e73488c740199e287e78b457a))
+
+
 ## v1.0.39 (2026-02-28)
 
 
