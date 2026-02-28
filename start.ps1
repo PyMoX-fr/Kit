@@ -6,56 +6,147 @@ param(
   [switch]$HelpSwitch
 )
 
+# --- Configuration globale ---
+$VenvPath = ".venv/Scripts/python.exe"
+$ActivateScript = ".\.venv\Scripts\Activate.ps1"
+$MinPSVersion = [Version]"7.5.4"
+
 # Encodage UTF‑8 complet
 [System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
 [System.Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $OutputEncoding = [System.Text.Encoding]::UTF8
 
+# --- Fonctions utilitaires ---
+function Show-PauseMessage {
+  param([string]$Message)
+  Write-Host ""
+  Write-Host $Message
+  Write-Host ""
+  Write-Host "Appuyer sur une touche pour continuer..."
+  Write-Host ""
+  [void][System.Console]::ReadKey($true)
+}
+
+function Check-PowerShellVersion {
+  param([Version]$RequiredVersion)
+  if ($PSVersionTable.PSVersion -lt $RequiredVersion) {
+    Show-PauseMessage "*** ATTENTION: INSTALLER PowerShell >= $RequiredVersion pour profiter pleinement des messages (Voir README.md, Tips/2) ***"
+    return $false
+  }
+  return $true
+}
 
 function Show-Help {
   Write-Host "Utilisation : ./start [mode]"
   Write-Host "  Sans argument  -> (.venv) flet run main.py"
   Write-Host "  0              -> Reset total (VEnv + dépendances)"
   Write-Host "  1              -> Ré-installe uniquement PyMoX_Kit"
+  Write-Host "Options : -h, --help, help"
+}
+
+function Show-VenvMissingError {
+  param([string]$ExtraMessage = "")
+  Write-Host '[ERREUR] Aucun .venv détecté. Lancer " ./start 0 " pour initialiser l''environnement.'
+  if ($ExtraMessage) { Write-Host $ExtraMessage }
+  exit 1
 }
 
 function Deactivate-ExistingVenv {
   if (Get-Command deactivate -ErrorAction SilentlyContinue) {
-    Write-Host "Je sors du venv actuel et le vide..."
+    Write-Host "Je sors si besoin, du venv actuel, le vide et le supprime..."
     deactivate
     Write-Host "1 - Sorti → Root."
   }
 }
 
 function Remove-Venv {
-  if (Test-Path ".venv") {
-    Write-Host "2 - Suppression du VE (Virtual Environment)..."
-    Remove-Item ".venv" -Recurse -Force
-    Write-Host "Suppression du VE terminée."
+  param(
+    [int]$MaxAttempts = 5,
+    [int]$DelaySeconds = 1
+  )
+
+  if (-not (Test-Path ".venv")) {
+    Write-Host "Aucun .venv trouvé, rien à supprimer."
+    return
   }
+
+  Write-Host "2 - Suppression du VE (Virtual Environment)..."
+
+  # Fermer processus Python/Flet/Pip susceptibles de verrouiller des fichiers
+  $procs = Get-Process -Name python, flet, pip -ErrorAction SilentlyContinue
+  if ($procs) {
+    Write-Host "Arrêt des processus Python/Flet/Pip en cours..."
+    $procs | Stop-Process -Force -ErrorAction SilentlyContinue
+    Start-Sleep -Seconds 1
+  }
+
+  # Retirer attributs lecture-seule pour éviter les blocages
+  try {
+    Get-ChildItem -Path ".venv" -Recurse -Force -ErrorAction SilentlyContinue |
+    ForEach-Object { $_.Attributes = 'Normal' }
+  }
+  catch {
+    # non bloquant
+  }
+
+  $attempt = 0
+  while ($attempt -lt $MaxAttempts) {
+    $attempt++
+    try {
+      Remove-Item ".venv" -Recurse -Force -ErrorAction Stop
+      Write-Host "Suppression du VE terminée."
+      return
+    }
+    catch {
+      Write-Host "Tentative $attempt/$MaxAttempts : échec de Remove-Item. Message: $($_.Exception.Message)"
+      Start-Sleep -Seconds $DelaySeconds
+    }
+  }
+
+  # Dernier recours : utiliser rmdir via cmd (parfois plus efficace sur Windows)
+  Write-Host "Tentative finale avec rmdir (cmd)..."
+  try {
+    cmd /c "rmdir /s /q .venv"
+    if (-not (Test-Path ".venv")) {
+      Write-Host "Suppression du VE terminée (rmdir)."
+      return
+    }
+    else {
+      Write-Host "[ERREUR] Impossible de supprimer .venv même après rmdir."
+    }
+  }
+  catch {
+    Write-Host "[ERREUR] rmdir a échoué : $($_.Exception.Message)"
+  }
+
+  Write-Host "Si le problème persiste : fermez les applications utilisant Python, désactivez l'antivirus temporairement, ou redémarrez la machine."
 }
+
 
 function Ensure-Venv {
   Write-Host "Création de l'environnement virtuel ← racine..."
   python -m venv .venv
-  if (-not (Test-Path ".venv/Scripts/python.exe")) {
+  if (-not (Test-Path $VenvPath)) {
     Write-Host "[ERREUR] Échec de création de l'environnement virtuel."
     exit 1
   }
 }
 
 function Activate-Venv {
-  if (-not (Test-Path ".venv/Scripts/Activate.ps1")) {
-    Write-Host "[ERREUR] Le venv n'existe pas. Lancez le mode 0 pour le créer."
-    exit 1
+  if (-not (Test-Path $ActivateScript)) {
+    Show-VenvMissingError
   }
-  . ".\.venv\Scripts\Activate.ps1"
+  . $ActivateScript
   Write-Host "VEnv activé."
 }
 
 function Upgrade-Pip {
   Write-Host "Mise à jour de pip..."
   python -m pip install --upgrade pip
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "[ERREUR] ❌ Échec de la mise à jour de pip"
+    exit 1
+  }
 }
 
 function Install-Requirements {
@@ -88,11 +179,13 @@ function Start-App {
   flet run -d -r --ignore-dirs __pycache__ main.py
 }
 
+# --- Aide ---
 if ($HelpSwitch -or $mode -in @("help", "--help")) {
   Show-Help
   exit 0
 }
 
+# --- Modes ---
 switch ($mode) {
   "0" {
     Write-Host "----------------------------------------"
@@ -135,27 +228,32 @@ switch ($mode) {
 
     Start-App
   }
+
   "1" {
-    Write-Host "Mode 1 : réinstallation rapide de pymox_kit"
+    Write-Host "Mode 1 : réinstallation rapide de PyMoX_Kit"
+    if (-not (Test-Path $VenvPath)) {
+      Show-VenvMissingError
+    }
     Activate-Venv
     Run-PymoxKitFresh
     Start-App
   }
-  default {
-    if (-not (Test-Path ".venv/Scripts/python.exe")) {
-      Write-Host "[ERREUR] Aucun .venv détecté. Lancer ./start 0 pour initialiser l'environnement."
-      exit 1
-    }
-    $minVersion = [Version]"7.5.4"
 
-    if ($PSVersionTable.PSVersion -lt $minVersion) {
-      Write-Host ""
-      Write-Host "*** ATTENTION: INSTALLER PowerShell >= 7.5.4 pour profiter pleinement des messages (Voir README.md, Tips/2) ***"
-      Write-Host ""
-      Write-Host "Appuyer sur une touche pour continuer..."
-      Write-Host ""
-      [void][System.Console]::ReadKey($true)
+  default {
+    if (-not (Test-Path $VenvPath)) {
+      # Afficher rappel de version si nécessaire, puis message d'erreur centralisé
+      Check-PowerShellVersion -RequiredVersion $MinPSVersion | Out-Null
+      Show-VenvMissingError
     }
+
+    # Affichage informatif de la version PowerShell (non bloquant)
+    Write-Host "----------------------------------------"
+    Write-Host "PowerShell utilisé : $($PSVersionTable.PSEdition) - Version $($PSVersionTable.PSVersion)"
+    Write-Host "----------------------------------------"
+
+    # Avertissement non bloquant si version inférieure
+    Check-PowerShellVersion -RequiredVersion $MinPSVersion | Out-Null
+
     Activate-Venv
     Start-App
   }
