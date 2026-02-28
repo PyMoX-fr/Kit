@@ -38,9 +38,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     """
     hello, bye = _get_helpers()
 
-    print('\nOki 260227 :\n\n' + hello())
-    print(bye())
-
+    print('\n260228 :\n\n' + hello())
+    print(bye(), end='\n\n')
+    print('Fin.')
     return 0
 
 
