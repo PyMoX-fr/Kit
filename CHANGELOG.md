@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.37 (2026-02-28)
+
+### Bug Fixes
+
+- New Logo
+  ([`7166782`](https://github.com/PyMoX-fr/Kit/commit/7166782319b8d53b93ed9ef90662f7a09c96e9ee))
+
+
 ## v1.0.36 (2026-02-27)
 
 ### Bug Fixes
