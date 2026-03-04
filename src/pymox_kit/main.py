@@ -7,15 +7,16 @@ robustes pour fonctionner depuis la racine du repo ou comme paquet installé.
 
 from __future__ import annotations
 
-from typing import Optional, Sequence, Tuple
+from typing import Callable, Optional, Sequence, Tuple
 
 
-def _get_helpers() -> Tuple[callable, callable]:
+def _get_helpers() -> Tuple[Callable[[], str], Callable[[], str], Callable[..., str]]:
     try:
         # prefer package-relative import when used as package
-        from .kit import hello, bye
+        from . import _globals
+        from .kit import hello, bye, nf
 
-        return hello, bye
+        return hello, bye, nf
     except Exception:
         # fallback when executed as a script: ensure package root is on sys.path
         import sys
@@ -27,7 +28,7 @@ def _get_helpers() -> Tuple[callable, callable]:
             sys.path.insert(0, pkg_root)
 
         mod = importlib.import_module("pymox_kit.kit")
-        return mod.hello, mod.bye
+        return mod.hello, mod.bye, mod.nf
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
@@ -36,11 +37,16 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     Arguments:
         argv: liste d'arguments (optionnel, pour tests). Retourne code de sortie.
     """
-    hello, bye = _get_helpers()
 
-    print('\n260228 :\n\n' + hello())
-    print(bye(), end='\n\n')
-    print('Fin.')
+    print('-'*55)
+    print('YEAHHH')
+
+    # hello, bye, nf = _get_helpers()
+
+    # # print('\n260304 :\n\n' + hello())
+    # # print(bye(), end='\n\n')
+    # print(nf(123456.789))
+    # print('\x1b[1;31mFin.\033[0m')
     return 0
 
 
