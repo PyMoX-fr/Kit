@@ -3,7 +3,8 @@ import os
 import time
 import urllib.request
 import urllib.error
-from importlib.metadata import version
+from pathlib import Path
+from importlib.metadata import PackageNotFoundError, version
 
 # ✅ timeout court (ne pas bloquer le CLI)
 # ✅ fallback offline (si PyPI indisponible)
@@ -13,11 +14,21 @@ from importlib.metadata import version
 
 PACKAGE_NAME = "pymox-kit"
 CACHE_FILE = os.path.join(os.path.expanduser("~"), ".pymox_kit_version_cache.json")
-CACHE_TTL = 3660  # 3600 (1 heure)
+CACHE_TTL = 3600  # 3600 (1 heure)
+
+
+def _is_site_packages_mode() -> bool:
+    return "site-packages" in Path(__file__).resolve().parts
 
 
 def get_local_version():
-    return version("pymox_kit")
+    if not _is_site_packages_mode():
+        return "dev-local"
+
+    try:
+        return version("pymox_kit")
+    except PackageNotFoundError:
+        return "unknown"
 
 
 def read_cache():
@@ -82,11 +93,23 @@ def get_latest_version():
         return None, False
 
 
-def hello():
+def hello(check_updates: bool | None = None):
+    if check_updates is None:
+        check_updates = _is_site_packages_mode()
+
     local_v = get_local_version()
     latest_v, from_cache = get_latest_version()
 
     print("Local version :", local_v)
+
+    if not check_updates:
+        if latest_v:
+            print(
+                "Latest PyPI version :",
+                latest_v,
+                "(cache)" if from_cache else "(network)",
+            )
+        return f"Salut les gens 😊 !\n\t 👉 From Pymox-Kit, version {local_v} !"
 
     if latest_v:
         print(
