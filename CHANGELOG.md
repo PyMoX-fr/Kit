@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.44 (2026-02-28)
+
+### Bug Fixes
+
+- Up starter
+  ([`6788d7e`](https://github.com/PyMoX-fr/Kit/commit/6788d7e5b0e306dd6e3ea1b20bc3a0b5646ae69b))
+
+
 ## v1.0.43 (2026-02-28)
 
 
