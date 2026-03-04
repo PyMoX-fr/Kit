@@ -14,7 +14,7 @@ from importlib.metadata import PackageNotFoundError, version
 
 PACKAGE_NAME = "pymox-kit"
 CACHE_FILE = os.path.join(os.path.expanduser("~"), ".pymox_kit_version_cache.json")
-CACHE_TTL = 3600  # 3600 (1 heure)
+CACHE_TTL = 60  # 3600 (1 heure) //2ar
 
 
 def _is_site_packages_mode() -> bool:
@@ -23,10 +23,10 @@ def _is_site_packages_mode() -> bool:
 
 def get_local_version():
     if not _is_site_packages_mode():
-        return "dev-local"
+        return "Dev-local"
 
     try:
-        return version("pymox_kit")
+        return version("pymox_kit") # Danger: Version de la dépendance, pas forcément la même que celle du package lui-même (ex: si on a installé une ancienne version de pymox-kit mais qu’on a une nouvelle version de kit dans le code, ça peut être trompeur). C’est pour ça que j’ai ajouté le mode dev-local qui affiche "Dev-local" pour éviter les confusions pendant le développement.
     except PackageNotFoundError:
         return "unknown"
 
@@ -93,37 +93,26 @@ def get_latest_version():
         return None, False
 
 
-def hello(check_updates: bool | None = None):
-    if check_updates is None:
-        check_updates = _is_site_packages_mode()
-
+def hello():
     local_v = get_local_version()
     latest_v, from_cache = get_latest_version()
 
-    print("Local version :", local_v)
-
-    if not check_updates:
-        if latest_v:
-            print(
-                "Latest PyPI version :",
-                latest_v,
-                "(cache)" if from_cache else "(network)",
-            )
-        return f"Salut les gens 😊 !\n\t 👉 From Pymox-Kit, version {local_v} !"
-
+    # Affiche la version PyPI si disponible
     if latest_v:
         print(
             "Latest PyPI version :",
             latest_v,
             "(cache)" if from_cache else "(network)",
         )
+    else:
+        print("⚠️ Impossible de vérifier la dernière version (offline ?)")
 
+    # Vérification des updates
+    if latest_v:
         if local_v < latest_v:
             print("⚠️ Une mise à jour est disponible !")
         else:
             print("✅ Vous êtes à jour !")
-    else:
-        print("⚠️ Impossible de vérifier la dernière version (offline ?)")
 
     return f"Salut les gens 😊 !\n\t 👉 From Pymox-Kit, version {local_v} !"
 
