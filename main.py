@@ -10,14 +10,14 @@ from scripts.dev_main_launcher import _add_src_to_path
 if __name__ == "__main__":
     _add_src_to_path()
     import pymox_kit as _pkg
-    from pymox_kit import R, RED, hello
+    from pymox_kit import R, RED, CYAN, hello
 
     if os.getenv("PYMOX_DEBUG_IMPORT") == "1":
         print(f"[DEBUG] pymox_kit from: {_pkg.__file__}")
 
-    print(f"{RED}LOCAL DEV{R}")
+    print(f"{RED}→ LOCAL DEV{R}")
     print("-" * 55)
-    print("YEAHHH")
+    print(f"{CYAN}YEAHHH{R}")
     print("\n260304 :\n")
     print(hello())
     raise SystemExit(0)

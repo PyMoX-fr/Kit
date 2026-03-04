@@ -131,6 +131,7 @@ def hello(check_updates: bool | None = None):
 def bye():
     return "Bye-bye les gens, & @ ++ ⏳..."
 
+__all__ = ["hello", "bye"]
 
 if __name__ == "__main__":
     print(hello())

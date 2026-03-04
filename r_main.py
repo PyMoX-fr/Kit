@@ -21,7 +21,7 @@ if __name__ == "__main__":
     if os.getenv("PYMOX_DEBUG_IMPORT") == "1":
         print(f"[DEBUG] pymox_kit from: {_pkg.__file__}")
 
-    print(f"{RED}REAL USER{R}")
+    print(f"{RED}→ REAL USER{R}")
     print("-" * 55)
     print("YEAHHH")
     print("\n260304 :\n")

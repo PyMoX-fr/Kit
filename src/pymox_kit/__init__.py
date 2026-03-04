@@ -1,7 +1,8 @@
 __version__ = "0.0.0"
-from .kit import hello, bye, nf
-from ._globals import RED, R, SB, ES
+from ._globals import *
+from ._tools import *
 from .tokens import tokens
+from .kit import *
 
-__all__ = ["hello", "bye", "nf", "tokens", "RED", "R", "SB", "ES"]
+# __all__ = [...] dans chaque module
   

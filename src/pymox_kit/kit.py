@@ -1,9 +1,8 @@
-"""Package-facing helpers powered by the cached utilities."""
-from ._globals import *
-from ._tools import nf
-from ._cached_kit import bye, hello
+from ._cached_kit import *
 
-__all__ = ["hello", "bye", "nf"]
+__all__ = ["hello", "bye"]
 
-# ❌ cls()
-# ❌ sl()
+# * [ ] cls()
+# * [ ] sl()
+# * [ ] ls()
+# * [ ] exit()

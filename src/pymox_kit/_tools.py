@@ -12,3 +12,5 @@ def nf(f, dec=2):
             f"⚠️ Errorfor nf() in main_tools:\n\033[1;31mBad data type ({type(f).__name__}) -> {f} (Line {src[2]} in {src[0]}){EB}"
         )
         return str(f)
+
+__all__ = ["nf"]

@@ -32,5 +32,7 @@ def bye():
     return f"Bye-bye les gens !"
 
 
+__all__ = ["hello", "bye"]
+
 if __name__ == "__main__":
     print(hello())
