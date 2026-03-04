@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.46 (2026-03-04)
+
+### Bug Fixes
+
+- ↑ default main
+  ([`9edecb9`](https://github.com/PyMoX-fr/Kit/commit/9edecb9caa45ebc097edf9b024418037505ef013))
+
+
 ## v1.0.45 (2026-03-04)
 
 
