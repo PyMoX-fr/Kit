@@ -2,31 +2,34 @@
 
 from __future__ import annotations
 
-import os, dotenv, sys
+import sys
 from pathlib import Path
-dotenv.load_dotenv()
-# dotenv.load_dotenv(dotenv_path=Path(__file__).parent / ".env")
+
+# from scripts.compare_runner import run_package_comparer
 
 
 def _prefer_installed_package() -> None:
     repo_root = Path(__file__).resolve().parent
     local_src = str((repo_root / "src").resolve())
-    sys.path[:] = [path for path in sys.path if Path(path).resolve().as_posix() != Path(local_src).resolve().as_posix()]
+    sys.path[:] = [
+        path
+        for path in sys.path
+        if Path(path).resolve().as_posix() != Path(local_src).resolve().as_posix()
+    ]
 
-from pymox_kit import hello, RED,CYAN, R
+
+def main() -> int | None:
+    _prefer_installed_package()
+    import pymox_kit as package
+
+    label = "REAL USER"
+
+    print("-" * 55)
+    print(f"\x1b[96m{label}\x1b[0m", time_marker())
+
+    # Pour comparer local (./main) et réel (./r_main)
+    # return run_package_comparer(package, label=label)
+
 
 if __name__ == "__main__":
-    _prefer_installed_package()
-    import pymox_kit as _pkg
-
-    if os.getenv("PYMOX_DEBUG_IMPORT") == "123":
-        print(f"[DEBUG] pymox_kit from: {_pkg.__file__}")
-
-    print(f"{RED}→ 7REAL USER{R}")
-    print("-" * 55)
-    print(f"{CYAN}YEAHHH{R}")
-    print("\n260304 :\n")
-    print(hello())
-    print("-" * 55)
-    print("DEBUG =", os.getenv("PYMOX_DEBUG_IMPORT"))
-    raise SystemExit(0)
+    raise SystemExit(main())

@@ -1,9 +1,16 @@
 import locale, os, shutil, sys
 
+from flask import cli
 locale.setlocale(locale.LC_ALL, "fr_FR")
 
 # CLIW = SIMU_CLIW if SIMU_CLIW else CLIWR
 # LG = "\n" + "-" * CLIWR
+
+##########################################################################
+# SIMU_CliW = 40  # @i Si on veut Pour simuler une cliW sinon: Commenter #
+SLEEP_DURATION = 0.7  # @i Tempo des affichages en secondes des parties  #
+IDEAL_CLIWS = range(50, 61)  # Utiliser 55 col. est conseillé            #
+##########################################################################
 
 
 def ansi(n):
@@ -11,6 +18,7 @@ def ansi(n):
 
 
 BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = [ansi(i) for i in range(8)]
+
 # x = 0 : noir - 31 : rouge - 32 : vert - 33 : jaune - 34 : bleu - 35 : magenta - 36 : cyan - 37 : blanc
 # 3x pour encre, 4x pour fond, 7 reverse, 10x fonds vifs
 
@@ -32,4 +40,7 @@ R, SB, SD, SI, SU, SR, SS = [ansi_style(i) for i in [*range(5), 7, 9]]
 # print("-" * 55)
 # print("Yes")
 
-__all__ = ["CYAN", "RED", "R", "SB", "SS"]
+CLIW =55
+
+
+__all__ = ["CLIW", "CYAN", "RED", "R", "SB", "SS"]
