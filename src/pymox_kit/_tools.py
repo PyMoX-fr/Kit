@@ -11,7 +11,9 @@ def time_marker() -> str:
     # winsound.PlaySound("bip.wav", winsound.SND_FILENAME)
     # winsound.MessageBeep()
 
-    winsound.Beep(5000, 100)
+    winsound.Beep(2500, 30)
+    time.sleep(0.05)
+    winsound.Beep(2500, 30)
     return time.strftime("%H:%M:%S")
 
 
