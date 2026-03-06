@@ -51,7 +51,7 @@ pip install pymox_kit
 ```python
 from pytmox_kit import *
 
-print(f'Bon {SI}{GREEN}code{R} !\n{hello()}')
+print(f"Bon {GREEN}{SI}{SB}code{R} !\n")
 ```
 
 ## Voir + 👉 [Doc détaillée](https://github.com/PyMoX-fr/Kit/blob/main/doc/Doc.md)
