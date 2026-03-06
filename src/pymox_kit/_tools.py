@@ -1,9 +1,7 @@
 import locale, inspect, os, sys, time, winsound
-from ._globals import *
+# from ._globals import *
 
-
-CLIW = CLIWR = 55
-
+CLIW = CLIWR = 50
 
 # ❌ Expo inutile → sera la der ligne du exit() ------ 24:00:59 ---
 def bip_time() -> str:
@@ -51,8 +49,9 @@ def clsOri(title=None, filename="", page=None):
 
     # cliWAnalysis() # //2ar
 
-    if title != 0:
-        setTitle(title, filename)
+    # if title != 0: ❌ A remettre
+    #     setTitle(title, filename)
+    pass
 
 
 def sl(

@@ -1,20 +1,49 @@
-import os, sys, shutil, time
+import json, os, sys, shutil, time
 
-_last_width = None
-_last_time = 0
+# Local ANSI constants to avoid circular import with _globals.
+GREEN = "\x1b[0;92m"
+RED = "\x1b[0;91m"
+R = "\x1b[0m"
+
+# from diskcache import Cache ❌ tester
 
 
-def get_cli_width(default=80, ttl=0.2):
-    global _last_width, _last_time
-    now = time.time()
+CACHE_FILE = os.path.join(os.path.expanduser("~"), ".cli_width_cache.json")
 
-    if _last_width is not None and (now - _last_time) < ttl:
-        return _last_width
+TTL = 7
 
-    w = get_cli_width_process(default)
-    _last_width = w
-    _last_time = now
+
+def read_cache():
+    if not os.path.exists(CACHE_FILE):
+        return None
+    data = json.load(open(CACHE_FILE))
+    if time.time() - data["ts"] < TTL:
+        return data["width"]
+
+
+def write_cache(width):
+    json.dump({"width": width, "ts": time.time()}, open(CACHE_FILE, "w"))
+
+
+def get_cli_width():
+    w = read_cache()
+    if w is not None:
+        # print(f" {GREEN}Cached{R} -" * 4)
+        return w
+    w = get_cli_width_process()
+    print(f" {RED}Processed{R} -" * 4)
+    write_cache(w)
     return w
+
+
+# def get_cli_width(defaut=80):
+#     cache = Cache("/tmp/mycache")
+#     value = cache.get("cli_width")
+#     if value is None:
+#         value = get_cli_width_process()
+#         cache.set("cli_width", value, expire=30)  # TTL 30s
+
+#     print(value)
 
 
 def get_cli_width_process(default=80):
@@ -121,6 +150,10 @@ def get_cli_width_process(default=80):
 
     # 5) Fallback final
     return default
+
+
+# print("ID get_cli_width =", id(get_cli_width))
+# print("ID get_cli_width_process =", id(get_cli_width_process))
 
 
 CLIW = get_cli_width()

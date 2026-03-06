@@ -8,7 +8,7 @@ locale.setlocale(locale.LC_ALL, "fr_FR")
 # LG = "\n" + "-" * CLIWR
 from ._cli_utils import *
 
-print ((str(CLIW)+' ')*55)
+# print ((str(CLIW)+' ')*55)
 
 ##########################################################################
 # SIMU_CliW = 40  # @i Si on veut Pour simuler une cliW sinon: Commenter #

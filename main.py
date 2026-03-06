@@ -21,7 +21,7 @@ def main() -> int | None:
 
     # print(f"Bon {GREEN}{SI}{SB}code{R} !\n{hello()}")
     print(f"Bon {GREEN}{SI}{SB}code{R} !\n")
-    print(CLIW)
+    # print(CLIW)
 
 
 # Pour comparer local (./main) et réel (./r_main)
