@@ -16,14 +16,12 @@ IDEAL_CLIWS = range(50, 61)  # Utiliser 55 col. est conseillé            #
 def ansi(n):
     return f"\x1b[0;9{n}m"
 
-
 BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = [ansi(i) for i in range(8)]
 
 # x = 0 : noir - 31 : rouge - 32 : vert - 33 : jaune - 34 : bleu - 35 : magenta - 36 : cyan - 37 : blanc
 # 3x pour encre, 4x pour fond, 7 reverse, 10x fonds vifs
 
 ST = "\x1b[30;43m"  # Stabilo effect
-
 
 def ansi_style(n):
     return f"\x1b[{n}m"
@@ -40,7 +38,6 @@ R, SB, SD, SI, SU, SR, SS = [ansi_style(i) for i in [*range(5), 7, 9]]
 # print("-" * 55)
 # print("Yes")
 
-CLIW =55
+CLIW =55 # ❌ Calcul réel
 
-
-__all__ = ["CLIW", "CYAN", "RED", "R", "SB", "SS"]
+__all__ = ["CLIW", "BLACK", "RED", "GREEN", "YELLOW", "BLUE", "MAGENTA", "CYAN", "WHITE", "SB", "SD", "SI", "SU", "SR", "SS", "R"]

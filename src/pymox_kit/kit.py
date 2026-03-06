@@ -1,7 +1,7 @@
 from ._cached_kit import *
 from ._tools import *
 
-__all__ = ["time_marker", "cls", "sl", "hello", "bye"]
+# __all__ = [] # Mis dans chaque module
 
 # * [ ] cls()
 # * [ ] sl()

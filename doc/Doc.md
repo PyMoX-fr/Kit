@@ -1,24 +1,47 @@
-# PyMoX-Tools
+# Documentation PyMoX-Kit
 
 Trousse à outils utiles pour devs en PyMoX
 
 ---
 
-## Rapide mémo (Cf. GH)
+## Outils
 
-### Bases VE (Virtual Env)
+### Variables globales
+
+Couleurs du texte :
+
+BLACK (Noir), RED (Rouge), GREEN (Vert), YELLOW (Jaune), BLUE (Bleu), MAGENTA, CYAN et WHITE (Blanc)
 
 ```bash
-py -m venv .venv
-.\.venv\Scripts\activate
-py -m pip install --upgrade pip
-pip install -r requirements.txt
-
-# Installer en editable mode
-# pip install -e .
+SB : Start Bold      → Début Gras
+SD : Start Dim       → Début Pâle
+SI : Start Italic    → Début Italique
+SU : Start Underline → Début Sousligné
+SR : Start Reverse   → Début inversion vidéo
+SS : Start Stroke    → Début barré
+R  : Reset           → Re-initialise
 ```
 
-### Définir les TOKENs (TK) nécessaires :
+### Commandes
+
+```bash
+Hello ❌ à simplifier
+Bye
+* [ ] cls   : Clear Screen   → Efface CLI (+ Titre par défaut)
+* [/] sl    : Simple Line    → Simple Ligne
+* [ ] ls    : Line Separator → Ligne séparatrice (+ Infos)
+* [ ] exit  : Exit           → Sortie (Fin de script)
+```
+
+## Installations poussées
+
+### Installer en editable mode
+
+```bash
+pip install -e .
+```
+
+### Définir les TOKENs (TK) nécessaires
 
 GH_TOKEN dans compte GH User/Settings/Dev settings/PAT/TK (Classic) → new
 → IMPORTANT: Droits Repo & Wkf
@@ -34,11 +57,20 @@ Mettre GH TK dans .env
 PROJECT\pyproject.toml
 (name & repository)
 
-### Faire un push de la main avec fix: msg, feat: msg ou idem avec ! (fix!: msg)
+### Upgrade
 
-→ patch, minor ou major
+#### Faire un push de la branche main avec msg commit
 
-### Build local
+patch.minor.major
+
+* fix: msg                           → patch +1
+* feat: msg                          → minor +1
+* fix!: msg (fix!: msg OU feat!:msg) → major +1
+
+exemple:
+feat!: Version MVP => 6.6.7 → 7.0.0
+
+### # Process du Build local
 
 ```bash
 py -m build

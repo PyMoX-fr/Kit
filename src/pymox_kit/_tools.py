@@ -2,17 +2,15 @@ import locale, inspect, os, sys, time, winsound
 
 CLIW = CLIWR = 55
 
-
-def time_marker() -> str:
+# ❌ Expo inutile → sera la der ligne du exit() ------ 24:00:59 ---
+def bip_time() -> str:
     """Affiche un marqueur temporel dans la console."""
-    # ❌ marker
-
     # print("\a")
     # winsound.PlaySound("bip.wav", winsound.SND_FILENAME)
     # winsound.MessageBeep()
 
     winsound.Beep(2500, 30)
-    time.sleep(0.05)
+    # time.sleep(0.05)
     winsound.Beep(2500, 30)
     return time.strftime("%H:%M:%S")
 
@@ -227,4 +225,4 @@ def get_caller_function() -> str | None:
     return None
 
 
-__all__ = ["time_marker", "cls", "sl", "nf"]
+__all__ = ["bip_time", "cls", "sl", "nf"]
