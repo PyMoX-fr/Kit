@@ -1,6 +1,9 @@
 import locale, inspect, os, sys, time, winsound
+from ._globals import *
+
 
 CLIW = CLIWR = 55
+
 
 # ❌ Expo inutile → sera la der ligne du exit() ------ 24:00:59 ---
 def bip_time() -> str:
@@ -15,6 +18,10 @@ def bip_time() -> str:
     return time.strftime("%H:%M:%S")
 
 
+def is_page(obj):
+    return hasattr(obj, "clean") and callable(obj.clean)
+
+
 def cls(title=None, filename="", page=None):
     """Réinitialise la console (CLI) ou la page (Flet).
     Affiche title sauf si title=0.
@@ -24,51 +31,23 @@ def cls(title=None, filename="", page=None):
         page = title
         title = None
 
-    if page is not None and hasattr(page, "clean") and callable(getattr(page, "clean")):
+    if page is not None and hasattr(page, "clean") and callable(page.clean):
         page.clean()
 
         if title not in (None, 0) and hasattr(page, "title"):
             page.title = str(title)
 
-        if hasattr(page, "update") and callable(getattr(page, "update")):
+        if hasattr(page, "update") and callable(page.update):
             page.update()
         return
 
-    def _force_home_windows():
-        if os.name != "nt":
-            return
-        try:
-            import ctypes
+    print("\033[2J\033[H", end="\n")
 
-            class COORD(ctypes.Structure):
-                _fields_ = [("X", ctypes.c_short), ("Y", ctypes.c_short)]
+    print("Oki")
 
-            handle = ctypes.windll.kernel32.GetStdHandle(-11)
-            if handle not in (0, -1):
-                ctypes.windll.kernel32.SetConsoleCursorPosition(handle, COORD(0, 0))
-        except Exception:
-            pass
 
-    out = getattr(sys, "__stdout__", None)
-
-    try:
-        if out and hasattr(out, "write"):
-            out.write("\033[3J\033[2J\033[H")
-            out.flush()
-    except Exception:
-        pass
-
-    if os.name == "nt":
-        try:
-            with open("CON", "w", encoding="utf-8", errors="ignore") as con:
-                con.write("\033[3J\033[2J\033[H")
-                con.flush()
-        except Exception:
-            pass
-
-    _force_home_windows()
-    os.system("cls" if os.name == "nt" else "clear")
-    _force_home_windows()
+# ❌ Del when cls() (new) is ok
+def clsOri(title=None, filename="", page=None):
 
     # cliWAnalysis() # //2ar
 
@@ -225,4 +204,4 @@ def get_caller_function() -> str | None:
     return None
 
 
-__all__ = ["bip_time", "cls", "sl", "nf"]
+__all__ = ["cls", "sl", "nf", "bip_time"]

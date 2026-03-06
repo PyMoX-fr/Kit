@@ -1,64 +1,51 @@
-import locale, os, shutil, sys
+import os, sys, shutil, time
 
-from flask import cli
-
-locale.setlocale(locale.LC_ALL, "fr_FR")
-
-# CLIW = SIMU_CLIW if SIMU_CLIW else CLIWR
-# LG = "\n" + "-" * CLIWR
-from ._cli_utils import *
-
-print ((str(CLIW)+' ')*55)
-
-##########################################################################
-# SIMU_CliW = 40  # @i Si on veut Pour simuler une cliW sinon: Commenter #
-SLEEP_DURATION = 0.7  # @i Tempo des affichages en secondes des parties  #
-IDEAL_CLIWS = range(50, 61)  # Utiliser 55 col. est conseillé            #
-##########################################################################
+_last_width = None
+_last_time = 0
 
 
-def ansi(n):
-    return f"\x1b[0;9{n}m"
+def get_cli_width(default=80, ttl=0.2):
+    global _last_width, _last_time
+    now = time.time()
+
+    if _last_width is not None and (now - _last_time) < ttl:
+        return _last_width
+
+    w = get_cli_width_process(default)
+    _last_width = w
+    _last_time = now
+    return w
 
 
-BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = [ansi(i) for i in range(8)]
+def get_cli_width_process(default=80):
+    """
+    Récupère la largeur réelle de la console avec plusieurs stratégies.
 
-# x = 0 : noir - 31 : rouge - 32 : vert - 33 : jaune - 34 : bleu - 35 : magenta - 36 : cyan - 37 : blanc
-# 3x pour encre, 4x pour fond, 7 reverse, 10x fonds vifs
+    Ordre volontairement choisi (et testé en conditions réelles) :
+    1. Variables d'environnement explicites (prioritaires)
+    2. Windows : interrogation directe de la console via WinAPI
+    3. os.get_terminal_size() sur plusieurs flux (stdout, stderr, stdin)
+    4. shutil.get_terminal_size() avec fallback
+    5. Valeur par défaut
 
-ST = "\x1b[30;43m"  # Stabilo effect
+    Cet ordre est important : dans certains environnements (stdout non TTY,
+    stderr/stdin TTY, consoles intégrées, Flet, IDE...), shutil renvoie
+    systématiquement la valeur de fallback (80), alors que la WinAPI ou
+    certains flux donnent la vraie largeur.
+    """
 
+    # for suffix in ("out", "err", "in"):
+    #     stream = getattr(sys, f"std{suffix}")
+    #     name = f"sys.std{suffix}.isatty()"
+    #     print(f"{name:<19} = {stream.isatty()}")
 
-def ansi_style(n):
-    return f"\x1b[{n}m"
-
-
-# Reset, Style Dim(Pâle), Bold, Italic, Underline, Reverse, Strikethrough
-R, SB, SD, SI, SU, SR, SS = [ansi_style(i) for i in [*range(5), 7, 9]]
-# \033[3mItalique\033[23m)
-# \033[4mSouligné\033[24m)
-# \033[3;4mSouligné & Italique\033[23;24m)
-
-# print("-" * 55)
-# print(f"{ST}Oki{R}")
-# print("-" * 55)
-# print("Yes")
-
-# CLIW = get_cli_width() # ❌ Calcul réel
-
-
-def cls():
-    print("\033[2J\033[H", end="")  # Clear screen and move cursor to top-left
-
-
-def get_cli_width_Pri_et_fonctionnel(default=80):
-    """Récupère la largeur réelle de la console avec plusieurs stratégies."""
-
+    # 1) Variables d'environnement
     for env_name in ("PY_CLI_WIDTH", "CLI_WIDTH", "COLUMNS"):
         env_val = os.environ.get(env_name)
         if env_val and env_val.isdigit() and int(env_val) > 0:
             return int(env_val)
 
+    # 2) Windows : WinAPI sur stdout / stderr / stdin
     if os.name == "nt":
         try:
             import ctypes
@@ -106,6 +93,7 @@ def get_cli_width_Pri_et_fonctionnel(default=80):
         except Exception:
             pass
 
+    # 3) os.get_terminal_size() sur plusieurs flux
     for stream in (
         getattr(sys, "__stdout__", None),
         sys.stdout,
@@ -123,6 +111,7 @@ def get_cli_width_Pri_et_fonctionnel(default=80):
         except Exception:
             continue
 
+    # 4) shutil.get_terminal_size() avec fallback
     try:
         cols = shutil.get_terminal_size(fallback=(default, 24)).columns
         if cols > 0:
@@ -130,24 +119,10 @@ def get_cli_width_Pri_et_fonctionnel(default=80):
     except Exception:
         pass
 
+    # 5) Fallback final
     return default
 
 
-__all__ = [
-    "BLACK",
-    "RED",
-    "GREEN",
-    "YELLOW",
-    "BLUE",
-    "MAGENTA",
-    "CYAN",
-    "WHITE",
-    "SB",
-    "SD",
-    "SI",
-    "SU",
-    "SR",
-    "SS",
-    "R",
-    "cls"
-]
+CLIW = get_cli_width()
+
+__all__ = ["CLIW"]

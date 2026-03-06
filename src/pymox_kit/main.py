@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-
 def main() -> int:
     """Affiche un message de démonstration du package."""
 
