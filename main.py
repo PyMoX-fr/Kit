@@ -15,8 +15,6 @@ def main() -> int | None:
 
     print("-" * 55)
     print(f"\x1b[96m{label}\x1b[0m", '-',bip_time())
-    
-    print (f'{SS}Lionel{R} CÔTE')
 
     # Pour comparer local (./main) et réel (./r_main)
     # return run_package_comparer(package, label=label)
