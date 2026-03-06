@@ -13,11 +13,14 @@ from pymox_kit import *
 def main() -> int | None:
     label = "LOCAL DEV"
 
-    print("-" * 55)
-    print(f"\x1b[96m{label}\x1b[0m", '-',bip_time())
+    print(f"\n\x1b[96m{label}\x1b[0m", "-", bip_time())
+    print("-" * 54 + "→")
 
     # Pour comparer local (./main) et réel (./r_main)
     # return run_package_comparer(package, label=label)
+
+    # print(f'Bon {SI}{GREEN}code{R} !\n{hello()}')
+    print(f"Bon {SI}{GREEN}code{R} !\n")
 
 
 if __name__ == "__main__":
