@@ -54,7 +54,7 @@ from pytmox_kit import *
 print(Hello())
 ```
 
-## Voir + 👉 [Doc détaillée](./doc/DOC.md)
+## Voir + 👉 [Doc détaillée](https://github.com/PyMoX-fr/Kit/blob/main/doc/Doc.md)
 
 ----
 
