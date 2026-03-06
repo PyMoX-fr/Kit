@@ -20,15 +20,17 @@ def _prefer_installed_package() -> None:
 
 def main() -> int | None:
     _prefer_installed_package()
-    import pymox_kit as package
+    import pymox_kit as pk
+
+    pk.cls()
 
     label = "REAL USER"
 
     print("-" * 55)
-    print(f"\x1b[96m{label}\x1b[0m", '-', package.time_marker())
+    print(f"\x1b[96m{label}\x1b[0m", "-", pk.bip_time())
 
     # Pour comparer local (./main) et réel (./r_main)
-    # return run_package_comparer(package, label=label)
+    # return run_package_comparer(pk, label=label)
 
 
 if __name__ == "__main__":

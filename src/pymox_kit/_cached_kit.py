@@ -14,6 +14,11 @@ from importlib.metadata import PackageNotFoundError, version
 
 PACKAGE_NAME = "pymox-kit"
 CACHE_FILE = os.path.join(os.path.expanduser("~"), ".pymox_kit_version_cache.json")
+# Ce chemin existe toujours :
+# Windows → C:\Users\<toi>\.cli_width_cache.json
+# Linux → /home/<toi>/.cli_width_cache.json
+# macOS → /Users/<toi>/.cli_width_cache.json
+
 CACHE_TTL = 60  # 3600 (1 heure) //2ar
 
 

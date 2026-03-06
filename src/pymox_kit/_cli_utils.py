@@ -1,11 +1,51 @@
 import json, os, sys, shutil, time
+from ._globals import *
+from ._cli_utils import *
 
 # Local ANSI constants to avoid circular import with _globals.
-GREEN = "\x1b[0;92m"
-RED = "\x1b[0;91m"
-R = "\x1b[0m"
+# GREEN = "\x1b[0;92m"
+# RED = "\x1b[0;91m"
+# R = "\x1b[0m"
 
 # from diskcache import Cache ❌ tester
+
+
+def clear():
+    print("\033[2J\033[H", end="")  # Clear screen and move cursor to top-left
+
+
+def cls(title=None, filename="", page=None):
+    """Réinitialise la console (CLI) ou la page (Flet).
+    Affiche title sauf si title=0.
+    """
+
+    if page is None and hasattr(title, "clean") and callable(getattr(title, "clean")):
+        page = title
+        title = None
+
+    if page is not None and hasattr(page, "clean") and callable(page.clean):
+        page.clean()
+
+        if title not in (None, 0) and hasattr(page, "title"):
+            page.title = str(title)
+
+        if hasattr(page, "update") and callable(page.update):
+            page.update()
+        return
+
+    print("\033[2J\033[H", end="\n")
+
+    print(f"{RED}{SR}Oki{R} ! {GREEN}{SI}Let's go...{R} !")
+
+
+# ❌ Del when cls() (new) is ok
+def clsOri(title=None, filename="", page=None):
+
+    # cliWAnalysis() # //2ar
+
+    # if title != 0: ❌ A remettre
+    #     setTitle(title, filename)
+    pass
 
 
 CACHE_FILE = os.path.join(os.path.expanduser("~"), ".cli_width_cache.json")
@@ -16,13 +56,25 @@ TTL = 7
 def read_cache():
     if not os.path.exists(CACHE_FILE):
         return None
-    data = json.load(open(CACHE_FILE))
-    if time.time() - data["ts"] < TTL:
-        return data["width"]
+    try:
+        with open(CACHE_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if time.time() - data["ts"] < TTL:
+            return data["width"]
+    except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError):
+        # Cache invalide ou corrompu: on repart proprement au prochain calcul.
+        try:
+            os.remove(CACHE_FILE)
+        except OSError:
+            pass
+
+    return None
 
 
 def write_cache(width):
-    json.dump({"width": width, "ts": time.time()}, open(CACHE_FILE, "w"))
+    with open(CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump({"width": width, "ts": time.time()}, f)
 
 
 def get_cli_width():
@@ -158,4 +210,4 @@ def get_cli_width_process(default=80):
 
 CLIW = get_cli_width()
 
-__all__ = ["CLIW"]
+__all__ = ["cls", "CLIW"]

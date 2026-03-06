@@ -1,5 +1,7 @@
 import locale, inspect, os, sys, time, winsound
-# from ._globals import *
+
+from ._globals import *
+from ._cli_utils import *
 
 CLIW = CLIWR = 50
 
@@ -18,40 +20,6 @@ def bip_time() -> str:
 
 def is_page(obj):
     return hasattr(obj, "clean") and callable(obj.clean)
-
-
-def cls(title=None, filename="", page=None):
-    """Réinitialise la console (CLI) ou la page (Flet).
-    Affiche title sauf si title=0.
-    """
-
-    if page is None and hasattr(title, "clean") and callable(getattr(title, "clean")):
-        page = title
-        title = None
-
-    if page is not None and hasattr(page, "clean") and callable(page.clean):
-        page.clean()
-
-        if title not in (None, 0) and hasattr(page, "title"):
-            page.title = str(title)
-
-        if hasattr(page, "update") and callable(page.update):
-            page.update()
-        return
-
-    print("\033[2J\033[H", end="\n")
-
-    print("Oki")
-
-
-# ❌ Del when cls() (new) is ok
-def clsOri(title=None, filename="", page=None):
-
-    # cliWAnalysis() # //2ar
-
-    # if title != 0: ❌ A remettre
-    #     setTitle(title, filename)
-    pass
 
 
 def sl(
@@ -203,4 +171,4 @@ def get_caller_function() -> str | None:
     return None
 
 
-__all__ = ["cls", "sl", "nf", "bip_time"]
+__all__ = ["sl", "nf", "bip_time"]

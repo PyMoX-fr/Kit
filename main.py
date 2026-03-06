@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 from scripts.dev_main_launcher import _add_src_to_path
-
 _add_src_to_path()
+
 from pymox_kit import *
 import sys
 
@@ -22,7 +22,6 @@ def main() -> int | None:
     # print(f"Bon {GREEN}{SI}{SB}code{R} !\n{hello()}")
     print(f"Bon {GREEN}{SI}{SB}code{R} !\n")
     # print(CLIW)
-
 
 # Pour comparer local (./main) et réel (./r_main)
 # return run_package_comparer(package, label=label)
