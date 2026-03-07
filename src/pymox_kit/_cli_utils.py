@@ -2,13 +2,9 @@ import json, os, sys, shutil, time
 from ._globals import *
 from ._cli_utils import *
 
-# Local ANSI constants to avoid circular import with _globals.
-# GREEN = "\x1b[0;92m"
-# RED = "\x1b[0;91m"
-# R = "\x1b[0m"
+# from diskcache import Cache ❌ À tester // cache 'maison'
 
-# from diskcache import Cache ❌ tester
-
+CACHE_FILE = os.path.join(os.path.expanduser("~"), ".cli_width_cache.json")
 
 def clear():
     print("\033[2J\033[H", end="")  # Clear screen and move cursor to top-left
@@ -19,6 +15,11 @@ def cls(title=None, filename="", page=None):
     Affiche title sauf si title=0.
     """
 
+    # cliWAnalysis() # //2ar
+    
+    # if title != 0: ❌ A remettre
+    #     setTitle(title, filename)
+    
     if page is None and hasattr(title, "clean") and callable(getattr(title, "clean")):
         page = title
         title = None
@@ -33,25 +34,11 @@ def cls(title=None, filename="", page=None):
             page.update()
         return
 
-    print("\033[2J\033[H", end="\n")
+    clear()
 
     print(f"{RED}{SR}Oki{R} ! {GREEN}{SI}Let's go...{R} !")
 
-
-# ❌ Del when cls() (new) is ok
-def clsOri(title=None, filename="", page=None):
-
-    # cliWAnalysis() # //2ar
-
-    # if title != 0: ❌ A remettre
-    #     setTitle(title, filename)
-    pass
-
-
-CACHE_FILE = os.path.join(os.path.expanduser("~"), ".cli_width_cache.json")
-
-TTL = 7
-
+TTL = 7  # 7
 
 def read_cache():
     if not os.path.exists(CACHE_FILE):
@@ -76,27 +63,16 @@ def write_cache(width):
     with open(CACHE_FILE, "w", encoding="utf-8") as f:
         json.dump({"width": width, "ts": time.time()}, f)
 
-
 def get_cli_width():
     w = read_cache()
     if w is not None:
         # print(f" {GREEN}Cached{R} -" * 4)
         return w
     w = get_cli_width_process()
-    print(f" {RED}Processed{R} -" * 4)
+    # str = f"{RED}Process...{R}"
+    print(f"{str}", f"→ {RED}{SB}{w}{R} cols\n")
     write_cache(w)
     return w
-
-
-# def get_cli_width(defaut=80):
-#     cache = Cache("/tmp/mycache")
-#     value = cache.get("cli_width")
-#     if value is None:
-#         value = get_cli_width_process()
-#         cache.set("cli_width", value, expire=30)  # TTL 30s
-
-#     print(value)
-
 
 def get_cli_width_process(default=80):
     """
@@ -207,7 +183,8 @@ def get_cli_width_process(default=80):
 # print("ID get_cli_width =", id(get_cli_width))
 # print("ID get_cli_width_process =", id(get_cli_width_process))
 
-
 CLIW = get_cli_width()
+
+# print(CLIW, "cols")
 
 __all__ = ["cls", "CLIW"]
