@@ -6,6 +6,8 @@ param(
   [switch]$HelpSwitch
 )
 
+# REMOTE STARTER ./rstart
+
 # --- Configuration globale ---
 $VenvPath = ".venv/Scripts/python.exe"
 $ActivateScript = ".\.venv\Scripts\Activate.ps1"
