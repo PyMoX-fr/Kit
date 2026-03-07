@@ -2,6 +2,7 @@ from pymox_kit import *
 
 
 def footer(mode="LOCAL DEV"):
+    # ❌  2 remove
 
     label = mode
     biptime = bip_time()
@@ -13,4 +14,3 @@ def footer(mode="LOCAL DEV"):
     
     print(f"{chr(0x2500)}" * CLIW)
     print(f"{CYAN}{SB}{label}{R}", " " * sp_w, biptime)
-__all__ = ["footer"]

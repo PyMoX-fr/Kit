@@ -5,7 +5,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 from pymox_kit import *
-import scripts.common_footer as kit_dev
+# import scripts.common_footer as kit_dev
 
 # from scripts.compare_runner import run_package_comparer
 
@@ -28,7 +28,8 @@ def main() -> int | None:
 
     # Pour comparer local (./main) et réel (./r_main)
     # return run_package_comparer(pk, label=label)
-    kit_dev.footer("REAL USER")
+    
+    end("REAL USER")
 
 if __name__ == "__main__":
     raise SystemExit(main())
