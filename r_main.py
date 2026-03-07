@@ -29,7 +29,7 @@ def main() -> int | None:
     # Pour comparer local (./main) et réel (./r_main)
     # return run_package_comparer(pk, label=label)
     
-    end("REAL USER")
+    end("REALo USER")
 
 if __name__ == "__main__":
     raise SystemExit(main())
