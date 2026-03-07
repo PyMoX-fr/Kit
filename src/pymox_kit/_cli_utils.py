@@ -187,7 +187,7 @@ def get_cli_width_process(default=80):
 CLIW = get_cli_width()
 
 
-def end(mode="LOCAL DEV"):
+def end(mode="Dev"):
 
     label = mode
     biptime = bip_time()
