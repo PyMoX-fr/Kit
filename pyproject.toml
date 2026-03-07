@@ -17,7 +17,7 @@ dependencies = [
   # Ajoute ici tes dépendances, ex:
   # "requests >=2.0.0"
   "python-dotenv",
-  "setuptools_scm",
+  # "setuptools_scm", # //2ar ?
   "flask"
 ]
 requires-python = ">=3.12"

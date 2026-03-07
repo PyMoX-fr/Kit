@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from pymox_kit import *
+import scripts.common_footer as kit_dev
 
 # from scripts.compare_runner import run_package_comparer
 
@@ -20,18 +22,13 @@ def _prefer_installed_package() -> None:
 
 def main() -> int | None:
     _prefer_installed_package()
-    import pymox_kit as pk
+    cls()
 
-    pk.cls()
-
-    label = "REAL USER"
-
-    print("-" * 55)
-    print(f"\x1b[96m{label}\x1b[0m", "-", pk.bip_time())
+    print(f"\n\n\t\t\t\t{SB}MON REAL USER MODE{R}\n")
 
     # Pour comparer local (./main) et réel (./r_main)
     # return run_package_comparer(pk, label=label)
-
+    kit_dev.footer("REAL USER")
 
 if __name__ == "__main__":
     raise SystemExit(main())
