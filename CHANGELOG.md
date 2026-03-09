@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.8 (2026-03-09)
+
+### Bug Fixes
+
+- ↑ clear process 4 git-bash
+  ([`585fb1e`](https://github.com/PyMoX-fr/Kit/commit/585fb1ec061983c415a0f04f33f5c33f79f5c2f0))
+
+
 ## v1.2.7 (2026-03-09)
 
 ### Bug Fixes
