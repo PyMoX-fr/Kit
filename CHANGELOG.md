@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.0 (2026-03-09)
+
+### Features
+
+- Add minimalist capture 1
+  ([`9b348fd`](https://github.com/PyMoX-fr/Kit/commit/9b348fd4478332790c60ae8663fbe2734284cfaf))
+
+
 ## v1.1.16 (2026-03-09)
 
 
