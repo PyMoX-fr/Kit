@@ -56,9 +56,7 @@ print(f"Bon {GREEN}{SI}{SB}code{R} !\n")
 end()
 ```
 
-<div align="center" style="margin-top: 0">
-  ![Capture rendu de ./start](https://github.com/PyMoX-fr/Kit/blob/main/assets/imgs/capture_1.png)
-</div>
+![Capture rendu de ./start](https://github.com/PyMoX-fr/Kit/blob/main/assets/imgs/capture_1.png)
 
 ## Voir + 👉 [Doc détaillée](https://github.com/PyMoX-fr/Kit/blob/main/doc/Doc.md)
 
