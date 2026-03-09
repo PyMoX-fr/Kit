@@ -1,5 +1,4 @@
 import locale, os, shutil, sys
-
 from flask import cli
 
 locale.setlocale(locale.LC_ALL, "fr_FR")
@@ -32,10 +31,15 @@ ST = "\x1b[30;43m"  # Stabilo effect
 # Reset, Style Dim(Pâle), Bold, Italic, Underline, Reverse, Strikethrough
 R, SB, SD, SI, SU, SR, SS = [ansi_style(i) for i in [*range(5), 7, 9]]
 
-if __name__ == "__main__":
+
+def main():
     print(
         f"{GREEN}{SB}Green{R} {RED}{SD}Red{R} {YELLOW}{SI}Yellow{R} {BLUE}{SU}Blue{R} {MAGENTA}{SR}Magenta{R} {CYAN}{SS}Cyan{R} {WHITE}White{R}"
     )
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
 
 __all__ = [
     "BLACK",  # Noir"
