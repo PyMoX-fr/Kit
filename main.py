@@ -29,9 +29,6 @@ def main() -> int | None:
     # return run_package_comparer(package, label=label)
     g.main()
 
-    cls()
-    print(f"\n{GREEN}(.venv){R} PS C:\\Kit>{YELLOW}./start\n")
-    print(f"Bon {GREEN}{SI}{SB}code{R} !")
     end()
 
     # end('Local Kit Dev')

@@ -178,7 +178,8 @@ function Start-App {
   Write-Host ""
   Write-Host "Démarrage automatique du script ./r_main.py... 🚀"
   Write-Host ""
-  flet run -d -r --ignore-dirs __pycache__ r_main.py
+  # ❌ comment pas dupli pour rstart ?
+  flet run -d -r --ignore-dirs __pycache__ r_main.py 
 }
 
 # --- Aide ---

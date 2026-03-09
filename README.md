@@ -55,7 +55,7 @@ pip install -r requirements
 ./start -h
 ```
 
-→ Liste des commandes dont celle pour exécuter la commande **flet run()**, au besoin re-initialiser soit toutes les libs, soit juste celle de PyMoX.fr pour en avoir la dernière version si necessaire.
+→ Liste des commandes dont celle pour exécuter la commande **flet run (Rafraîchissement automatique de la page / CLI)**, au besoin re-initialiser soit toutes les libs, soit juste celle de PyMoX.fr pour en avoir la dernière version si necessaire.
 
 ## 🚀 Utilisation
 

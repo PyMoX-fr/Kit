@@ -1,5 +1,5 @@
 import locale, os, shutil, sys
-from flask import cli
+# from flask import cli
 
 locale.setlocale(locale.LC_ALL, "fr_FR")
 
