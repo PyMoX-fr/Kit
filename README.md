@@ -37,8 +37,10 @@
 
 </div>
 
-## 🏗️ Installation : Process habituel - 🪟./start
+## 🏗️ Installation : 🐧→ Process habituel - 🪟 → ./start
+
 🐧
+
 ```bash
 py -m venv .venv
 source .venv/bin/activate
