@@ -8,7 +8,37 @@ from ._tools import *
 CACHE_FILE = os.path.join(os.path.expanduser("~"), ".cli_width_cache.json")
 
 def clear():
-    print("\033[2J\033[H", end="")  # Clear screen and move cursor to top-left
+    # Try ANSI first (works in most modern terminals), then shell fallbacks.
+    try:
+        print("\033[2J\033[3J\033[H", end="", flush=True)
+    except Exception:
+        pass
+
+    def _run_cmd(cmd):
+        try:
+            return subprocess.run(
+                cmd,
+                check=False,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            ).returncode == 0
+        except Exception:
+            return False
+
+    term = os.environ.get("TERM", "")
+    if term and shutil.which("tput") and _run_cmd(["tput", "clear"]):
+        return
+
+    if os.name == "nt":
+        # Git Bash/mintty usually provides clear; cmd builtin is a Windows fallback.
+        if shutil.which("clear") and _run_cmd(["clear"]):
+            return
+        _run_cmd(["cmd", "/c", "cls"])
+        return
+
+    if shutil.which("clear"):
+        _run_cmd(["clear"])
+
 
 
 def cls(title=None, filename="", page=None):
