@@ -29,7 +29,11 @@ def main() -> int | None:
     # return run_package_comparer(package, label=label)
     g.main()
     
-    end('Local Kit Dev')
+    cls()
+    print(f"Bon {GREEN}{SI}{SB}code{R} !\n")
+    end()
+    
+    # end('Local Kit Dev')
     
 
 

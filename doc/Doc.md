@@ -25,12 +25,15 @@ R  : Reset           → Re-initialise
 ### Commandes
 
 ```bash
-Hello ❌ à simplifier
-Bye
-* [ ] cls   : Clear Screen   → Efface CLI (+ Titre par défaut)
+* [ ] Hello À simplifier
+* [x] Bye
+
+* [x] cls   : Clear Screen   → Efface CLI (+ Titre par défaut)
+* [x] end   : Exit           → Sortie (Fin de script aec marker (datetime))
 * [/] sl    : Simple Line    → Simple Ligne
+* [ ] cls   : Add Titre avec ar défaut
 * [ ] ls    : Line Separator → Ligne séparatrice (+ Infos)
-* [ ] exit  : Exit           → Sortie (Fin de script)
+* [ ] exit  : Exit           → Sortie (Fin de script) - Remplace end()
 ```
 
 ## Installations poussées
