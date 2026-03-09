@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.7 (2026-03-09)
+
+### Bug Fixes
+
+- Nett
+  ([`5e6e24a`](https://github.com/PyMoX-fr/Kit/commit/5e6e24ac206d5034312f7c20f41b2662e74b6d9c))
+
+
 ## v1.2.6 (2026-03-09)
 
 
