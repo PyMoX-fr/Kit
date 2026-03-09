@@ -1,6 +1,7 @@
 """Entrypoint de développement qui parle au code local."""
 
 from scripts.dev_main_launcher import _add_src_to_path
+
 _add_src_to_path()
 
 import pymox_kit._globals as g
@@ -20,9 +21,7 @@ import scripts.various as kit_dev
 def main() -> int | None:
 
     cls()
-
     print(f"\n\n\t\t\t\t{SB}MON LOCAL MAIN MODE{R}\n")
-
     print(f"Bon {GREEN}{SI}{SB}code{R} !\n")
 
     # Pour comparer local (./main) et réel (./r_main)
@@ -30,7 +29,6 @@ def main() -> int | None:
     g.main()
 
     end()
-
     # end('Local Kit Dev')
 
 
