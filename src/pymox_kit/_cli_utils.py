@@ -188,16 +188,17 @@ CLIW = get_cli_width()
 
 
 def end(mode="Dev"):
-
+    """
+    Args:
+        mode (str, optional): _description_. Defaults to "Dev".
+    """
     label = mode
     biptime = bip_time()
     sp_w = CLIW - len(label) - len(biptime) - 2  # -2 pour les 2 , => 2 espaces
-    
-    w = get_cli_width()
-
-    # ❌ donne pypi version & cliw
-    
+    w =CLIW
     # print(f"{w = }")
+    
+    # ❌ donne pypi version & cliw
     print()
     print(f"{chr(0x2500)}" * CLIW)
     print(f"{CYAN}{SB}{label}{R}", " " * sp_w, biptime)
