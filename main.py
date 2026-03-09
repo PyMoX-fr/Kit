@@ -28,13 +28,13 @@ def main() -> int | None:
     # Pour comparer local (./main) et réel (./r_main)
     # return run_package_comparer(package, label=label)
     g.main()
-    
+
     cls()
-    print(f"Bon {GREEN}{SI}{SB}code{R} !\n")
+    print(f"\n{GREEN}(.venv){R} PS C:\\Kit>{YELLOW}./start\n")
+    print(f"Bon {GREEN}{SI}{SB}code{R} !")
     end()
-    
+
     # end('Local Kit Dev')
-    
 
 
 if __name__ == "__main__":
