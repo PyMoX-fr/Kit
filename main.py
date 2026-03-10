@@ -35,3 +35,5 @@ def main() -> int | None:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+    # ❌ afficher version Kit installée // der version
