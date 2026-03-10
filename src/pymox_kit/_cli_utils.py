@@ -67,7 +67,7 @@ def cls(title=None, filename="", page=None):
 
     clear()
 
-    print(f"{RED}{SR}Oki{R} ! {GREEN}{SI}Let's go...{R} !")
+    # print(f"{RED}{SR}Oki{R} ! {GREEN}{SI}Let's go...{R} !")
 
 TTL = 7  # 7
 
