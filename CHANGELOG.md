@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.11 (2026-03-10)
+
+### Bug Fixes
+
+- Just 1 starter
+  ([`c47ffdf`](https://github.com/PyMoX-fr/Kit/commit/c47ffdff2e60271f5ddade7945530665b5eca185))
+
+
 ## v1.2.10 (2026-03-10)
 
 
