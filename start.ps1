@@ -1,5 +1,5 @@
 param(
-  [ValidateSet("run", "0", "1", "help", "--help")]
+  [ValidateSet("run", "0", "1", "r", "help", "--help")]
   [string]$mode = "run",
 
   [Alias("h", "help")]
@@ -41,6 +41,7 @@ function Show-Help {
   Write-Host "  Sans argument  -> (.venv) flet run main.py"
   Write-Host "  0              -> Reset total (VEnv + dépendances)"
   Write-Host "  1              -> Ré-installe uniquement PyMoX_Kit"
+  Write-Host "  r              -> Usage de PyMoX_Kit comme en réel"
   Write-Host "Options : -h, --help, help"
 }
 
@@ -213,6 +214,17 @@ function Start-App {
   flet run -d -r --ignore-dirs ".git,.venv,__pycache__" main.py
 }
 
+function Rstart-App {
+  Write-Host "========================================"
+  Write-Host "  Lancement de ./r_main.py"
+  Write-Host "========================================"
+  Write-Host ""
+  Write-Host "Démarrage automatique du script ./r_main.py... 🚀"
+  Write-Host ""
+  flet run -d -r --ignore-dirs __pycache__ r_main.py 
+}
+
+
 # --- Aide ---
 if ($HelpSwitch -or $mode -in @("help", "--help")) {
   Show-Help
@@ -271,6 +283,17 @@ switch ($mode) {
     Activate-Venv
     Run-PymoxKitFresh
     Start-App
+  }
+  
+  "r" {
+    Activate-Venv
+    
+    Write-Host "Mode REMOTE : Usage de PyMoX_Kit comme en réel"
+    if (-not (Test-Path $VenvPath)) {
+      Show-VenvMissingError
+    }
+    Start-Sleep 3   # ⬅️ pause de 3 secondes
+    Rstart-App
   }
 
   default {
