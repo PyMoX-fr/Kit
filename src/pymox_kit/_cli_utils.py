@@ -100,7 +100,7 @@ def get_cli_width():
         # print(f" {GREEN}Cached{R} -" * 4)
         return w
     w = get_cli_width_process()
-    print(f"{RED}Process...{R}", f"→ {RED}{SB}{w}{R} cols\n")
+    # print(f"{RED}Process...{R}", f"→ {RED}{SB}{w}{R} cols\n")
     write_cache(w)
     return w
 
