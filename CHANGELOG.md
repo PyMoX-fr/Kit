@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.9 (2026-03-10)
+
+### Bug Fixes
+
+- Nett Kit
+  ([`94295b4`](https://github.com/PyMoX-fr/Kit/commit/94295b444914088584a20607448e7a74e55a5a5c))
+
+
 ## v1.2.8 (2026-03-09)
 
 ### Bug Fixes
