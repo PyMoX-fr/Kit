@@ -31,3 +31,5 @@ def title_fr(n=3):
     )
 
     return title + " " + "─" * tiret
+
+__all__ = ["title_fr"]
