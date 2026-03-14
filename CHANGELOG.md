@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.14 (2026-03-14)
+
+### Bug Fixes
+
+- Export title_fr()
+  ([`3147047`](https://github.com/PyMoX-fr/Kit/commit/3147047b9614432f19b8ab2a3bb8253388e86c68))
+
+
 ## v1.2.13 (2026-03-14)
 
 
