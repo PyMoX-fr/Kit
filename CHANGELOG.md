@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.15 (2026-03-14)
+
+### Bug Fixes
+
+- Add _divers/
+  ([`42c3080`](https://github.com/PyMoX-fr/Kit/commit/42c308069cec6f910779a5ffdca16a43a84725c2))
+
+
 ## v1.2.14 (2026-03-14)
 
 ### Bug Fixes
