@@ -12,6 +12,9 @@ from pymox_kit import *
 import sys
 import scripts.various as kit_dev
 
+from pymox_kit._divers import title_fr
+# import _divers
+
 # from pymox_kit._globals import main as globals_main
 # globals_main()
 
@@ -22,7 +25,9 @@ def main() -> int | None:
 
     cls()
     
-    print(f"\n\n\t\t\t{SB}MON LOCAL MAIN MODE{R}\n")
+    print (title_fr())
+    
+    print(f"\n\t\t\t{SB}MON LOCAL MAIN MODE{R}\n")
     print(f"Bon {GREEN}{SI}{SB}code{R} !")
 
     # Pour comparer local (./main) et réel (./r_main)
