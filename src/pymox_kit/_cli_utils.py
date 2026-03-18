@@ -40,8 +40,59 @@ def clear():
         _run_cmd(["clear"])
 
 
-
 def cls(title=None, filename="", page=None):
+    """Réinitialise la console (CLI) ou la page (Flet).
+    Affiche title sauf si title=0.
+    """
+    import atexit
+    import tempfile
+
+    state_file = os.path.join(tempfile.gettempdir(), "pymox_cls2_state.txt")
+    uncaught_error = {"value": False}
+
+    # On efface au lancement seulement si le run précédent était OK.
+    prev_status = "error"
+    try:
+        with open(state_file, "r", encoding="utf-8") as f:
+            prev_status = f.read().strip() or "error"
+    except OSError:
+        prev_status = "error"
+
+    if prev_status == "ok":
+        cls_effective(title, filename, page)
+
+    # Par défaut, on marque ce run en erreur tant qu'il n'est pas terminé proprement.
+    try:
+        with open(state_file, "w", encoding="utf-8") as f:
+            f.write("error")
+    except OSError:
+        pass
+
+    old_excepthook = sys.excepthook
+
+    def _hook(exc_type, exc, tb):
+        uncaught_error["value"] = True
+        try:
+            with open(state_file, "w", encoding="utf-8") as f:
+                f.write("error")
+        except OSError:
+            pass
+        old_excepthook(exc_type, exc, tb)
+
+    sys.excepthook = _hook
+
+    def _on_exit():
+        if not uncaught_error["value"]:
+            try:
+                with open(state_file, "w", encoding="utf-8") as f:
+                    f.write("ok")
+            except OSError:
+                pass
+
+    atexit.register(_on_exit)
+
+
+def cls_effective(title=None, filename="", page=None):
     """Réinitialise la console (CLI) ou la page (Flet).
     Affiche title sauf si title=0.
     """
