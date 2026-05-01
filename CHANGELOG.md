@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.16 (2026-03-18)
+
+### Bug Fixes
+
+- Cls() ok even if error
+  ([`9e8a63e`](https://github.com/PyMoX-fr/Kit/commit/9e8a63e5e5cf759a95be43d7819feb8c6c3056e8))
+
+
 ## v1.2.15 (2026-03-14)
 
 ### Bug Fixes
