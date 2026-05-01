@@ -1,81 +1,43 @@
+
 [project]
-name = "pymox_kit"
-dynamic = ["version"]
-# version = "v0.1.2"  # sera géré automatiquement par semantic-release
-# version = "0.0.6"  # valeur placeholder, ignorée par semantic-release
-description = "Un module avec plein d'outils utiles pour devs en PyMoX (Py←thon - Mo←jo - flet→X)"
-authors = [{ name = "GrCOTE7", email = "GrCOTE7@gmail.com" }]
-# readme = {file = "README.md", encoding = "utf-8"}
+name = "KitTest"
+version = "0.0.1"
+description = "Kit Test"
 readme = "README.md"
-# readme = {file = "README.md", content-type = "text/markdown", encoding = "utf-8"}
-license = "MIT"
-classifiers = [
-  "Programming Language :: Python :: 3",
-  "Operating System :: OS Independent",
-]
-dependencies = [
-  # Ajoute ici tes dépendances, ex:
-  # "requests >=2.0.0"
-  "python-dotenv",
-  # "setuptools_scm", # //2ar ?
-  # "flask",
-  "flet"
-]
-requires-python = ">=3.12"
+requires-python = ">=3.13"
+authors = [{ name = "GrCOTE7", email = "GrCOTE7@gmail.com" }]
+dependencies = ["flet", "pymox_kit"]
 
-[project.scripts]
-pymox-kit = "pymox_kit.kit:hello"
+[project.optional-dependencies]
+dev = ["flet[all]"]
 
 
-[build-system]
-requires = ["setuptools>=77.0.0", "setuptools_scm", "wheel"]
-# requires = ["setuptools>=61.0", "setuptools_scm>=7.0"]
-build-backend = "setuptools.build_meta"
+[tool.flet]
+org = "com.mycompany"
+product = "Kit Test"
+company = "COTE"
+copyright = "Copyright (C) 2026 by GrCOTE7"
+compile.app = true
+compile.packages = true
+compile.cleanup = true
+build_number = 1
 
-[tool.semantic_release]
-tag_format = "v{version}"
-version_variable = "src/kit/__init__.py:__version__"
-repository = "https://github.com/PyMoX-fr/Kit"
-hvcs = "github"
-github_token = "env:GH_TOKEN"
-
-pypi_token = "env:PYPI_TOKEN"
-version_source = "tag"
-build_command = "python -m build"
-log_level = "DEBUG"
+[tool.flet.app]
+path = "."
 
 
-upload_sdist = true          # publie également le source distribution sur PyPI
-upload_wheel = true          # publie également le wheel sur PyPI
-verify_release_commit = true
-
-# commit_version_number = true
-# commit_message = "chore(release): version {version}"
-
-branch = "main" # branch de travail
-# commit_parser = "conventional" # essayer emoji
-# commit_parser = "semantic_release.commit_parser.emoji:parse_commit_message:"
+[tool.flet.android]
+split_per_abi = true
+min_sdk_version = 24
+target_sdk_version = 35
 
 
-upload_to_repository = true # active la publication sur PyPI
-upload_to_pypi = true       # active la publication sur PyPI
+[tool.flet.splash]
+android = false
 
-# [tool.semantic_release.changelog.default_templates]
-# changelog_file = "CHANGELOG.md"
 
-[tool.setuptools]
-package-dir = { "" = "src" }
-# packages = ["pymox_kit"] # dossier Python
-include-package-data = true
+# [tool.flet.android.permission]
+# "android.permission.CAMERA" = true
 
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.setuptools.package-data]
-"pymox_kit" = ["*.json", "*.txt"]
-
-# version_scheme = "release-branch-semver" # empêche les suffixes .devX ou .dirty
-[tool.setuptools_scm]
-local_scheme = "no-local-version"
-tag_regex = "^v?(?P<version>[0-9]+(\\.[0-9]+)+)$"
-write_to = "src/pymox_kit/_version.py"
+# [tool.flet.android.feature] # --android-features
+# "android.hardware.camera" = true

@@ -13,20 +13,20 @@ import sys
 import scripts.various as kit_dev
 
 from pymox_kit._divers import title_fr
+
 # import _divers
 
 # from pymox_kit._globals import main as globals_main
 # globals_main()
 
+
 # from scripts.compare_runner import run_package_comparer
-
-
 def main() -> int | None:
 
     cls()
-    
-    print (title_fr())
-    
+
+    print(title_fr())
+
     print(f"\n\t\t\t{SB}MON LOCAL MAIN MODE{R}\n")
     print(f"Bon {GREEN}{SI}{SB}code{R} !")
 

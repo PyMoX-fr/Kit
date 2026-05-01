@@ -37,6 +37,20 @@
 
 </div>
 
+## 🚀 Lancement
+
+Local :
+
+```bash
+./go
+```
+
+Réel :
+
+```bash
+./got
+```
+
 ## 🏗️ Installation : 🐧→ Process habituel - 🪟 → ./start
 
 🐧
